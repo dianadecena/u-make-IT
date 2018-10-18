@@ -1,0 +1,209 @@
+/*Centrar contenedor*/
+.sky{
+	background: linear-gradient(to top, rgb(2, 15, 31), rgb(4, 0, 17));
+	overflow: hidden;
+	height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.stars {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  min-width:100%;
+  height:100vh;
+  display:block;
+  background:url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  z-index:0;
+}
+
+.flex-container{
+	display: flex;
+	max-width: 350px;
+	height: auto;
+	max-height: 400px;
+	justify-content: center;
+	align-items: center;
+	margin: 10% auto;
+	
+}
+
+/*hacer el diseño mas atractivo*/
+
+#login-form{
+
+	width: 90%;
+	position: relative;
+	margin: 10% auto;
+	padding: 2%;
+	border-radius: 10px;
+	background: rgba(0, 0, 0, 0.336);
+	border-style: solid;
+	border-width: 5px;
+	border-color: rgb(132, 253, 142);
+	-webkit-box-shadow: 2px 2px 5px #727272;
+  	-moz-box-shadow: 2px 2px 5px #727272;
+  	filter: shadow(color=#727272, direction=135, strength=2);
+	box-shadow: 0px 0px 20px rgb(5, 255, 25);
+	font-family: Arial, Helvetica, sans-serif;
+	color: #fff;
+}
+.form-group{
+	padding: 2px;
+}
+#remember-me{
+	display: inline-flex;
+	position: relative;
+}
+#remember-me > label{
+	color: white;
+	margin: px;
+}
+
+input {
+	display: block;
+	color: #fff;
+	width: 90%;
+	height: auto;
+	font-size: 1rem;
+	border-radius: 10px;
+	border-width: 1.5px;
+	border-style: solid;
+	border-color: rgb(132, 253, 142);
+	box-shadow: 0px 0px 8px rgb(5, 255, 25);
+	padding: 2.5%;
+	margin: 8px;	
+	background: rgba(0, 0, 0, 0.336);
+	
+}
+
+input[type="submit"]{
+	background: rgba(0, 0, 0, 0.336);
+	width: 95%;
+	color: #fff;
+	letter-spacing: 1px;
+}
+
+#register{	
+	font-size: 1rem;
+	width: 25%;
+    height: 25%;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+}
+.unregister{
+	color:white;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*agg animacion al texto*/
+
+.unregister:hover{
+	color:#E7007A;
+	}
+
+a{
+	text-decoration: none;
+	font-style: normal;
+}
+
+/*haciendo la img responsive*/
+img {
+    width: 25%;
+    height: 25%;
+	display: block;
+	margin: auto;	
+}
+#register-title{
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5rem;
+	color:#fff;
+	letter-spacing: 1px;
+
+}
+/*reduciendo fuente para screens menores a 600px*/
+@media only screen and (max-width:600px){
+	html{
+		font-size:12px;
+	}
+}
+
+/*Ventana modal que muestra el form de registro*/
+
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.87);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+.modalDialog > div {
+	width: 90%;
+	max-width: 350px;
+	height: auto;
+	max-height: 400px;
+	position: relative;
+	margin: 5% auto;
+	padding: 1%;
+	border-radius: 10px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: rgb(132, 253, 142);
+	box-shadow: 0px 0px 8px rgb(5, 255, 25);
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: rgba(0, 0, 0, 0.562);
+	background: -o-linear-gradient(#fff, #999);
+  	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	
+}
+
+/*boton para cerrar el modal*/
+.close {
+	background: #fff;
+	color: #000000;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+/*efecto al pasar el raton encima cambia el color*/
+.close:hover { 
+	background: #00d9ff; 
+}
+
