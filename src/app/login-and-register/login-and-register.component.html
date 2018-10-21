@@ -1,9 +1,9 @@
 <div class="sky">
-    <div class="stars"></div>
-  <div class="flex-container">
-    <form id="login-form">
+  <div class="stars"></div>
+   <div class="flex-container">
+    <form (submit)="loginUser($event)" id="login-form">
       <div>
-        <img src="Img/ic_menu_login.png" />
+        <img src="./assets/Img/ic_menu_login.png" />
       </div>
       <div class="form-group">
         <input type="text" name="User" class="form-control" id="form-control" placeholder="Usuario" autocomplete="on" required />
@@ -30,7 +30,7 @@
       <div>
         <a href="#close" title="Close" class="close">x</a>
         <div>
-            <img src="Img/icon2.ico"/><p id="register-title">Registrese</p>
+            <img src="./assets/Img/icon2.ico"/><p id="register-title">Registrese</p>
         </div>
     
         <form>
