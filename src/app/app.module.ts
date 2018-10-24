@@ -13,6 +13,9 @@ import { OrdenComponent } from './orden/orden.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { BebidasComponent } from './bebidas/bebidas.component';
 import { PostresComponent } from './postres/postres.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore'
 
 const appRoutes:Routes = [
   {
@@ -59,7 +62,12 @@ const appRoutes:Routes = [
     PostresComponent],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule],
+    BrowserModule,
+    AngularFireModule.initializableApp(environment.firebase),
+    AngularFirestoreModule
+  ],
   bootstrap: [AppComponent]
+  
+
 })
 export class AppModule { }
