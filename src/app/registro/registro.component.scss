@@ -1,0 +1,66 @@
+.titulo{
+    text-align: center;
+    color: #6666ff;
+    font-size: 250%;
+}
+
+.cajaTitulo{
+    margin: 1rem;
+}
+
+body{
+    background: black;
+    margin-top: 10%;
+}
+
+.form-group{
+    color: white;
+    font-size: 1.2rem;
+}
+
+.container{
+    width: 60%;
+}
+
+#cajaGeneral{
+    margin: auto;
+    width: 50%;
+}
+
+
+#irLogin{
+    color: white;
+    font-size: 1.3rem;
+    margin-top: 5px;
+}
+
+#cajaIrLogin{
+    width: 25%;
+    margin-left:50%;
+}
+
+#boton{
+    background: #6666ff;
+    color: white;
+    font-style: bold;
+    font-size: 1.15rem;
+}
+
+#botonLogin{
+    background: #6666ff;
+    color: white;
+    font-style: bold;
+    padding: 7px;
+}
+
+a{
+    margin: 1rem;
+    background: white;
+    padding: 0.3rem;
+    border-radius: 3px;
+}
+
+#cajaRegister{
+    position: absolute;
+    margin-left: 35%;;
+}

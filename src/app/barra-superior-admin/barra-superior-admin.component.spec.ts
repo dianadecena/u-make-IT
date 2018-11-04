@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginAndRegisterComponent } from './login-and-register.component';
+import { BarraSuperiorAdminComponent } from './barra-superior-admin.component';
 
-describe('LoginAndRegisterComponent', () => {
-  let component: LoginAndRegisterComponent;
-  let fixture: ComponentFixture<LoginAndRegisterComponent>;
+describe('BarraSuperiorAdminComponent', () => {
+  let component: BarraSuperiorAdminComponent;
+  let fixture: ComponentFixture<BarraSuperiorAdminComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginAndRegisterComponent ]
+      declarations: [ BarraSuperiorAdminComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginAndRegisterComponent);
+    fixture = TestBed.createComponent(BarraSuperiorAdminComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

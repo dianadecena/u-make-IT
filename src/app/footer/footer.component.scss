@@ -1,0 +1,122 @@
+footer{
+	background: #6a84fb;
+	color: white;
+	width: 100%;
+}
+
+.container-footer-all{
+	width: 100%;
+	max-width: 1200px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 20px;
+}
+
+.container-body{
+	display: flex;
+	justify-content: space-between;
+}
+
+.colum1{
+	max-width: 400px;
+}
+
+.colum1 h1{
+	font-size: 20px;
+}
+
+.colum1 p{
+	font-size: 14px;
+	color: white;
+	margin-top: 20px;
+}
+
+.colum2{
+	max-width: 400px;
+}
+
+.colum2 h1{
+	font-size: 22px;
+}
+
+.fila{
+	margin-top: 15px;
+	display: flex;
+}
+
+.fila img{
+	width: 33px;
+	height: 33px;
+}
+
+.fila label{
+	margin-top: 5px;
+	margin-left: 10px;
+	color: white;
+}
+
+.colum3{
+	max-width: 400px;
+}
+
+.colum3 h1{
+	font-size: 22px;
+}
+
+.fila2{
+	margin-top: 15px;
+	display: flex;
+}
+
+.fila2 img{
+	width: 33px;
+	height: 33px;
+}
+
+.fila2 label{
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+.container-footer{
+	width: 100%;
+	background: #202020;
+	border: 3px solid #484848;
+}
+
+.footer{
+	max-width: 1200px;
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+}
+
+.copyright{
+	color: white;
+}
+
+.copyright a{
+	text-decoration: none;
+	color: white;
+}
+
+.datos a{
+	text-decoration: none;
+	color: white;
+	margin-right: 5px;
+	font-size: 1em;
+}
+
+
+@media screen and (max-width: 1100px){
+	.container-body{
+		flex-wrap: wrap;
+	}
+
+	.colum2,
+	.colum3{
+		margin-top: 35px;
+	}
+}
+

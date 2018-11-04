@@ -1,16 +1,21 @@
+<div class="logo">
+    <a a [routerLink]="['/home']"><img src="https://seeklogo.com/images/P/pizza-logo-9092058631-seeklogo.com.png"></a>
+</div>
+
+<div class="nombreEmpresa">uMakeIT!</div>
+
 <nav> 
-            <div class="handle"><b id="aux">Personaliza tu pedido</b><i class="far fa-arrow-alt-circle-down"></i></div>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a routerLink="/pizzas">Productos</a></li>
-                <li><a href="#">Comprar</a></li>
-                <li><a href="#">Usuario: Nombre Apellido<i class="far fa-arrow-alt-circle-down"></i></a>
-                    <ul>
-                       <li><a routerLink="/change-password">Cambio de clave</a></li>
-                       <li><a href="">Compras</a></li>
-                       <li><a routerLink="/orden">Orden</a></li>
-                       <li><a href="">Salir</a></li> 
-                    </ul>                    
-                </li>
-            </ul>
-        </nav>
+    <ul id = "menu">
+        <li><a [routerLink]="['/home']">Inicio</a></li>
+        <li><a [routerLink]="['/pizzas']">Productos</a></li>
+        <li><a [routerLink]="['/home']">Comprar</a></li>
+        <li><a [routerLink]="['/home']">Usuario: Nombre Apellido</a>
+            <ul id = "submenu">
+               <li><a [routerLink]="['/change-password']">Cambio de clave</a></li>
+               <li><a href="">Compras</a></li>
+               <li><a href="">Orden</a></li>
+               <li><a href="" (click)="salir()">Salir</a></li> 
+            </ul>                    
+        </li>
+    </ul>
+</nav>

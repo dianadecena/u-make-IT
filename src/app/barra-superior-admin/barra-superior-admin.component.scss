@@ -1,6 +1,6 @@
- /*CSS relacionado con la navbar*/
+/*CSS relacionado con la navbar*/
 
- .nombreEmpresa{                             /* titulo uMakeIT! */
+.nombreEmpresa{                             /* titulo uMakeIT! */
     color: white;
     position: absolute;
     margin-left: 85px;
@@ -57,11 +57,6 @@ nav li ul{                                   /*OCULTA DEL SUBMENU*/
 
 #submenu{
     margin-left: 25px;
-    z-index: 1;
-}
-
-#submenu li{
-    margin: 10px;
 }
 
 nav li:hover > ul{                           /* Submenu */

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-barra-superior',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarraSuperiorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auten: AuthService) { }
 
   ngOnInit() {
+  }
+
+  salir(){
+    this.auten.doLogout
   }
 
 }

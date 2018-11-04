@@ -1,21 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { LoginAndRegisterComponent } from './login-and-register/login-and-register.component';
 import { HomeComponent } from './home/home.component';
 import { BarraSuperiorComponent } from './barra-superior/barra-superior.component'; 
 import { PizzasComponent } from './pizzas/pizzas.component';
-import { RouterModule, Routes } from '@angular/router';
 import { PrincipalComponent } from './principal/principal.component';
 import { OrdenComponent } from './orden/orden.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { BebidasComponent } from './bebidas/bebidas.component';
 import { PostresComponent } from './postres/postres.component';
+import { FooterComponent } from './footer/footer.component';
+
+import { RouterModule, Routes } from '@angular/router';
+
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/firestore'
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { BarraSuperiorAdminComponent } from './barra-superior-admin/barra-superior-admin.component';
+import { PersonalizacionComponent } from './personalizacion/personalizacion.component';
+import { RegistroComponent } from './registro/registro.component';
+import { LoginComponent } from './login/login.component';
+
+//servicios
+import {AuthService} from './auth.service';
+
 
 const appRoutes:Routes = [
   {
@@ -44,14 +55,24 @@ const appRoutes:Routes = [
   },
   {
     path: '',
-    component: LoginAndRegisterComponent
-  }
-  ]
+    component: LoginComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegistroComponent
+  },
+  {
+    path: '**', redirectTo: 'home', pathMatch: 'full'
+  },
+  ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginAndRegisterComponent,
     HomeComponent,
     BarraSuperiorComponent,
     PrincipalComponent,
@@ -59,15 +80,29 @@ const appRoutes:Routes = [
     OrdenComponent,
     ChangePasswordComponent,
     BebidasComponent,
-    PostresComponent],
+    PostresComponent,
+    FooterComponent,
+    BarraSuperiorAdminComponent,
+    PersonalizacionComponent,
+    RegistroComponent,
+    LoginComponent],
+
   imports: [
-    RouterModule.forRoot(appRoutes),
     BrowserModule,
-    AngularFireModule.initializableApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    ReactiveFormsModule
   ],
+
+  providers: [
+    AuthService
+  ],
+
   bootstrap: [AppComponent]
-  
 
 })
 export class AppModule { }
