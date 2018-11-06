@@ -27,6 +27,12 @@
  	border-radius: 6px;
 }
 
+@media screen and (max-width: 950px){
+	.slider{
+	  margin-left: 12%;
+	}
+  }
+
 @keyframes cambio{
 	0%{margin-left:  0;}
 	20%{margin-left: 0;}

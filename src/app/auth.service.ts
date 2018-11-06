@@ -37,14 +37,17 @@ export class AuthService {
 
   doChangePassword(value){
     var user  = firebase.auth().currentUser; 
-    console.log(value.password);
-    console.log(value.password2);
-      user.updatePassword(value.password).then(function() {
+    user.updatePassword(value.password).then(function() {
         console.log("Se cambio correctamente la contraseña");
-      }).catch(function(error) {
+    }).catch(function(error) {
         console.log("NO se pudo cambiar contraseña");
-      });
+    });
 }
+
+  usuarioActual(){
+    var usuario = firebase.auth().currentUser.email;
+    return usuario;
+  }
 
  
 }

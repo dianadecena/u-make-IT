@@ -8,13 +8,20 @@ import { AuthService } from '../auth.service';
 })
 export class BarraSuperiorComponent implements OnInit {
 
+  
+
   constructor(private auten: AuthService) { }
 
   ngOnInit() {
   }
 
   salir(){
-    this.auten.doLogout
+    this.auten.doLogout;
+  }
+
+  mostrar(){
+    var user = this.auten.usuarioActual;
+    console.log(user);
   }
 
 }

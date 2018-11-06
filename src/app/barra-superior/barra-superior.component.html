@@ -9,7 +9,7 @@
         <li><a [routerLink]="['/home']">Inicio</a></li>
         <li><a [routerLink]="['/pizzas']">Productos</a></li>
         <li><a [routerLink]="['/home']">Comprar</a></li>
-        <li><a [routerLink]="['/home']">Usuario: Nombre Apellido</a>
+        <li class="caption"><a [routerLink]="['/home']">Usuario: {{ mostrar() }} </a>
             <ul id = "submenu">
                <li><a [routerLink]="['/change-password']">Cambio de clave</a></li>
                <li><a href="">Compras</a></li>

@@ -20,7 +20,8 @@ export class RegistroComponent implements OnInit {
   createForm() {
     this.registerForm = this.fb.group({
       email: ['', ],
-      password: ['',]
+      password: ['',],
+      password2:['',]
     });
   }
 
@@ -28,16 +29,21 @@ export class RegistroComponent implements OnInit {
   }
 
   tryRegister(value){
-    this.auten.doRegister(value)
-    .then(res => {
-      console.log(res);
-      this.errorMessage = "";
-      this.successMessage = "Your account has been created";
-    }, err => {
-      console.log(err);
-      this.errorMessage = err.message;
-      this.successMessage = "";
-    })
+    if(value.password == value.password2){
+      this.auten.doRegister(value)
+      .then(res => {
+        console.log(res);
+        this.errorMessage = "";
+        this.successMessage = "Your account has been created";
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+        this.successMessage = "";
+      })
+    }else{
+      this.errorMessage = 'Las contraseñas ingresadas NO son iguales';
+    }
+    
   }
 
 }
