@@ -1,21 +1,25 @@
 <div class="logo">
-  <a a [routerLink]="['/home']"><img src="https://seeklogo.com/images/P/pizza-logo-9092058631-seeklogo.com.png"></a>
+    <a a [routerLink]="['/home']"><img src="https://seeklogo.com/images/P/pizza-logo-9092058631-seeklogo.com.png"></a>
 </div>
 
 <div class="nombreEmpresa">uMakeIT!</div>
 
 <nav> 
-  <ul id = "menu">
-      <li><a [routerLink]="['/home']">Inicio</a></li>
-      <li><a [routerLink]="['/pizzas']">Personalizar</a></li>
-      <li><a [routerLink]="['/home']">Pedidos</a></li>
-      <li><a [routerLink]="['/home']">Admin: Nombre Apellido</a>
-          <ul id = "submenu">
-             <li><a [routerLink]="['/change-password']">Cambio de clave</a></li>
-             <li><a href="">Pedidos Pendientes</a></li>
-             <li><a href="">Ingresos</a></li>
-             <li><a [routerLink]="['']">Salir</a></li> 
-          </ul>                    
-      </li>
-  </ul>
+    <ul id = "menu">
+        <li><a [routerLink]="['/home']">Inicio</a></li>
+        <li><a [routerLink]="['/pizzas']">Productos</a></li>
+        <li><a [routerLink]="['/home']">Comprar</a></li>
+        <li class="caption">
+            <a [routerLink]="['/home']" *ngFor = "let user of userList">
+                <p *ngIf="user.email === title"> Admin: {{ user.userName }} </p>
+            </a>
+            <ul id = "submenu">
+               <li><a [routerLink]="['/change-password']">Cambio de clave</a></li>
+               <li><a href="">Compras</a></li>
+               <li><a href="">Orden</a></li>
+               <li><a (click)="salir()">Salir</a></li> 
+            </ul>                    
+        </li>
+    </ul>
 </nav>
+

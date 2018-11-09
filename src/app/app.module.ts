@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
+// Componentes
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BarraSuperiorComponent } from './barra-superior/barra-superior.component'; 
@@ -12,23 +13,24 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { BebidasComponent } from './bebidas/bebidas.component';
 import { PostresComponent } from './postres/postres.component';
 import { FooterComponent } from './footer/footer.component';
-
-import { RouterModule, Routes } from '@angular/router';
-
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { BarraSuperiorAdminComponent } from './barra-superior-admin/barra-superior-admin.component';
 import { PersonalizacionComponent } from './personalizacion/personalizacion.component';
 import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
+
+// Routing
+import { RouterModule, Routes } from '@angular/router';
+
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-//servicios
+// Servicios
 import { AuthService } from './auth.service';
-import { UserService} from './user.service';
+
 
 const appRoutes:Routes = [
   {
@@ -87,8 +89,7 @@ const appRoutes:Routes = [
     BarraSuperiorAdminComponent,
     PersonalizacionComponent,
     RegistroComponent,
-    LoginComponent,
-    UsuariosComponent],
+    LoginComponent],
 
   imports: [
     BrowserModule,
@@ -103,7 +104,6 @@ const appRoutes:Routes = [
 
   providers: [
     AuthService,
-    UserService
   ],
 
   bootstrap: [AppComponent]

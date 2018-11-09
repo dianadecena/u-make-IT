@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
-import { Router, Params } from '@angular/router';
+import { Router} from '@angular/router';
 
 //Importando una clase
 import {User} from './models/user';
@@ -15,8 +15,7 @@ export class AuthService {
 
   userList: AngularFireList<any>;
   selectedUser: User = new User();
-
-
+  
   constructor(public afAuth: AngularFireAuth,private router: Router,private fire: AngularFireDatabase ) { }
 
   doRegister(value){
@@ -37,7 +36,6 @@ export class AuthService {
     })
   }
 
-  
   doLogout(){
     this.router.navigate(['/login']);
     firebase.auth().signOut().then(function() {
@@ -47,7 +45,6 @@ export class AuthService {
     });
   }
   
-
   doChangePassword(value){
     var user  = firebase.auth().currentUser; 
     user.updatePassword(value.password).then(function() {
@@ -63,7 +60,7 @@ export class AuthService {
       var email =firebase.auth().currentUser.email;
       return email;
     }else{
-          console.log("no se pudo recuperar el nombre");
+          console.log("no se pudo recuperar el email del usuario");
     }
   }
 
@@ -79,5 +76,16 @@ export class AuthService {
       });
   }
 
+  //Determina si el usuario que ingreaso es administrador o no
+  isAdmin(){
+    var user = firebase.auth().currentUser;
+    if(user.email=='danielmesa635@gmail.com'){
+        console.log("Es un administrador");
+        return true;
+    }else{
+        console.log("NO es un administrador");
+        return false;
+    }
+  }
  
 }

@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import * as firebase from 'firebase/app';
-import { Router, Params } from '@angular/router';
+import { Router} from '@angular/router';
 
 import {User} from "../models/user";
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-barra-superior',
@@ -20,8 +18,7 @@ export class BarraSuperiorComponent implements OnInit {
   }
 
   public  title = this.auten.usuarioActual();
-  /*public title = 'sinaiR@gmail.com';*/
-  
+
   ngOnInit() {
     this.auten.getUser()
     .snapshotChanges()
