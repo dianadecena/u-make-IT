@@ -9,12 +9,15 @@
         <li><a [routerLink]="['/home']">Inicio</a></li>
         <li><a [routerLink]="['/pizzas']">Productos</a></li>
         <li><a [routerLink]="['/home']">Comprar</a></li>
-        <li class="caption"><a [routerLink]="['/home']">Usuario: {{ mostrar() }} </a>
+        <li class="caption">
+            <a [routerLink]="['/home']" *ngFor = "let user of userList">
+                <p *ngIf="user.email === title"> Usuario: {{ user.userName }} </p>
+            </a>
             <ul id = "submenu">
                <li><a [routerLink]="['/change-password']">Cambio de clave</a></li>
                <li><a href="">Compras</a></li>
                <li><a href="">Orden</a></li>
-               <li><a href="" (click)="salir()">Salir</a></li> 
+               <li><a (click)="salir()">Salir</a></li> 
             </ul>                    
         </li>
     </ul>

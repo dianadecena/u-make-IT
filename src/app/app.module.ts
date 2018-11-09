@@ -23,10 +23,12 @@ import { BarraSuperiorAdminComponent } from './barra-superior-admin/barra-superi
 import { PersonalizacionComponent } from './personalizacion/personalizacion.component';
 import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 //servicios
-import {AuthService} from './auth.service';
-
+import { AuthService } from './auth.service';
+import { UserService} from './user.service';
 
 const appRoutes:Routes = [
   {
@@ -85,21 +87,23 @@ const appRoutes:Routes = [
     BarraSuperiorAdminComponent,
     PersonalizacionComponent,
     RegistroComponent,
-    LoginComponent],
+    LoginComponent,
+    UsuariosComponent],
 
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    AngularFireDatabaseModule,
+    AngularFireAuthModule, 
     RouterModule.forRoot(appRoutes),
     FormsModule,
     ReactiveFormsModule
   ],
 
   providers: [
-    AuthService
+    AuthService,
+    UserService
   ],
 
   bootstrap: [AppComponent]

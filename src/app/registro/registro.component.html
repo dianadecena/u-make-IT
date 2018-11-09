@@ -10,8 +10,16 @@
         <form [formGroup]="registerForm" id="cajaGeneral">
 
           <div class="form-group">
-            <label>Correo Electrónico</label>
-            <input type="email" formControlName="email" class="form-control" required>
+            <label>Correo Electrónico</label> <input type="email" 
+            formControlName="email" 
+            class="form-control" 
+            style="text-transform:lowercase;" 
+            required>
+          </div>
+
+          <div class="form-group">
+            <label>Nombre de Usuario</label>
+            <input type="text" formControlName="userName" class="form-control" required>
           </div>
 
           <div class="form-group">
@@ -30,7 +38,7 @@
       </div>
 
       <div id="cajaRegister">
-        <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default" id="boton">Registrarse</button>
+        <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default" id="boton" type="reset">Registrarse</button>
       </div>
 
       <div class="row">

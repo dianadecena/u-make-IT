@@ -1,13 +1,23 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
+import { Router, Params } from '@angular/router';
+
+//Importando una clase
+import {User} from './models/user';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
 
-  constructor(public afAuth: AngularFireAuth) { }
+  userList: AngularFireList<any>;
+  selectedUser: User = new User();
+
+
+  constructor(public afAuth: AngularFireAuth,private router: Router,private fire: AngularFireDatabase ) { }
 
   doRegister(value){
     return new Promise<any>((resolve, reject) => {
@@ -27,13 +37,16 @@ export class AuthService {
     })
   }
 
+  
   doLogout(){
+    this.router.navigate(['/login']);
     firebase.auth().signOut().then(function() {
       console.log("has salido de la pagina");
     }).catch(function(error) {
-      // An error happened.
+      console.log("Ocurrio un error");
     });
   }
+  
 
   doChangePassword(value){
     var user  = firebase.auth().currentUser; 
@@ -45,8 +58,25 @@ export class AuthService {
 }
 
   usuarioActual(){
-    var usuario = firebase.auth().currentUser.email;
-    return usuario;
+    var user = firebase.auth().currentUser;
+    if(user){
+      var email =firebase.auth().currentUser.email;
+      return email;
+    }else{
+          console.log("no se pudo recuperar el nombre");
+    }
+  }
+
+  getUser(){
+      return this.userList = this.fire.list('users');
+  }
+
+  //Guardando el nombre de usuario en DataBase
+  insertUser(user: User){
+      this.userList.push({
+        userName: user.userName,
+        email: user.email
+      });
   }
 
  
