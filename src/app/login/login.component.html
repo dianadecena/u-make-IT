@@ -1,14 +1,15 @@
 <body>
-<h1 class="header">Entrar en uMakeIT!</h1>
+<h1 class="header">Inicia sesión en uMakeIT!</h1>
+
      <div class="container">
           <form [formGroup]="loginForm" id="cajaGeneral">
             <div class="form-group">
-              <label>Correo Electronico</label>
-              <input type="email" formControlName="email" class="form-control">
+              <label>Correo Electrónico</label>
+              <input type="email" formControlName="email" class="form-control" autocomplete="on" required>
             </div>
             <div class="form-group">
               <label>Contraseña</label>
-              <input type="password" class="form-control" formControlName="password">
+              <input type="password" class="form-control" formControlName="password" required>
               <label class="error">{{errorMessage}}</label>
             </div>
           </form>
@@ -19,7 +20,7 @@
       </div>
 
       <div id="cajaIrRegister">
-          <p id="irRegister">¿No tiene cuenta aún? <a [routerLink]="['/register']">Crear una cuenta</a></p>
+          <a id="botonregister" [routerLink]="['/register']">¿No tienes cuenta aún?</a>
       </div>
 
 </body>

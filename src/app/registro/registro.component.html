@@ -1,32 +1,50 @@
 <body>
-    <div class="cajaTitulo">
-        <h1 class="titulo">Crear una cuenta en uMakeIT!</h1>
-    </div>
-  
-    <div class="container">
-      <form [formGroup]="registerForm" id="cajaGeneral">
-        <div class="form-group">
-          <label>Correo electrónico</label>
-          <input type="email" formControlName="email" class="form-control" required>
-        </div>
 
-        <div class="form-group">
-          <label>Contraseña</label>
-          <input  type="password" class="form-control"formControlName="password" required>
-          <label class="error">{{errorMessage}}</label>
-          <label class="success">{{successMessage}}</label>
-        </div>
-      </form>
-    </div>
+    <div class="cajaPrincipal">
 
-    <div id="cajaRegister">
-      <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default" id="boton">Registrarse</button>
-    </div>
-
-    <div class="row" id="cajaIrLogin">
-      <div>
-        <p id ="irLogin">Ya tengo una cuenta <a id="botonLogin"[routerLink]="['/login']">Login</a></p>
+      <div class="cajaTitulo">
+          <h1 class="titulo">Registarse en uMakeIT!</h1>
       </div>
-    </div>
+    
+      <div class="container">
+
+        <form [formGroup]="registerForm" id="cajaGeneral">
+
+          <div class="form-group">
+            <label>Correo Electrónico</label> <input type="email" 
+            formControlName="email" 
+            class="form-control" 
+            style="text-transform:lowercase;"
+            autocomplete="on" 
+            required>
+          </div>
+
+          <div class="form-group">
+            <label>Nombre de Usuario</label>
+            <input type="text" formControlName="userName" class="form-control"  maxlength="12" required>
+          </div>
+
+          <div class="form-group">
+            <label>Contraseña</label>
+            <input  type="password" class="form-control" formControlName="password" required>
+          </div>
+
+          <div class="form-group">
+            <label>Confirma tu Contraseña</label>
+            <input  type="password" class="form-control" formControlName="password2" required>
+            <label class="error" id="mensaje">{{mensaje}}</label>
+          </div>
+        </form>
+      </div>
+
+      <div id="cajaRegister">
+        <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default" id="boton" type="reset">Registrarse</button>
+      </div>
+
+      <div class="row">
+          <a id="botonLogin"[routerLink]="['/login']">Ya tengo una cuenta</a>
+      </div>
+
+     </div>
 
   </body>

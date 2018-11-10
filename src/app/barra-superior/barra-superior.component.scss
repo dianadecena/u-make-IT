@@ -1,38 +1,42 @@
  /*CSS relacionado con la navbar*/
 
-/*
  nav{
     left:0px;
 	top:0px;
     position:fixed;
     width: 100%;
  }
-*/
 
+ p{
+     margin:0;
+ }
 
  .nombreEmpresa{                             /* titulo uMakeIT! */
     color: white;
-    position: absolute;
-    margin-left: 85px;
+    left:0px;
+	top:0px;
+    margin-left: 95px;
     margin-top: 15px;
     font-size: 1.5em;
-    font-family: fuente3;
+    position:fixed;
+    z-index: 1;
 }
 
 .logo img{                                  /* Logo en la navbar */
-    position: absolute;
+    left:0px;
+	top:2px;
+    position:fixed;
     margin-top: 0.7%;
     margin-left: 2%;
     width:45px; 
     height:45px;
+    z-index: 1;
 }
-
 
 nav {                                       /* ESTILOS GENERALES DE LA NAV */
     border: 3px solid #484848;
     list-style: none;
     text-align: center;
-    overflow: hidden;
     padding-top: 15px;
     padding-bottom: 5px;
     background-color: #202020;
@@ -66,8 +70,8 @@ nav li ul{                                   /*OCULTA DEL SUBMENU*/
 } 
 
 #submenu{
-    margin-left: 25px;
-    z-index: 1;
+    margin-left: 20px;
+
 }
 
 #submenu li{

@@ -3,35 +3,35 @@ body {
   background: black; 
 } 
 
-h1, h2, h3, h4, h5, h6 {
-  letter-spacing: 1.5px;
-}
-
-.section__titulo {
-  text-align: center;
-  font-size: 40px;
-  color: #FBA919;
-}
-.contenedor {
-  margin-left: 15%;
-  margin-top: 20%;
-}
-
 .promocion{
   text-align: center;
-  margin: 2%;
+  margin-top: 90px;
   background: #6a84fb;
   color: white;
   padding: 1%;
   font-family: Quicksand;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 #compraYA{
   font-size: 2vw;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 1.5px;
+}
+
 /*-------------OPCIONES-----------------------*/
+
+.grid{
+  margin-top: 2%;
+  float: left;
+  margin-left: 10%;
+  width: 14%;
+  height: 14%;
+  margin-right: 2%;
+}
+
 .grid li{
   list-style: none;
   background: #202020;
@@ -40,19 +40,13 @@ h1, h2, h3, h4, h5, h6 {
   border: 3px solid #484848;
 }
 
-.grid{
-   float: left;
-   margin-left: 10%;
-   width: 14%;
-   height: 14%;
-   margin-right: 2%;
-}
-
 .grid img{
   margin:11%;
   width: 80%;
   height: 80%;
 }
+
+
 
 /*-----------------Estilos de info-----------------*/
 .info__columna {
@@ -96,6 +90,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*------------------Estilos responsive------------------*/
+@media screen and (max-width: 585px){
+  .promocion{
+    margin-top: 180px;
+  }
+}
+@media screen and (max-width: 950px){
+  .grid{
+    display: none;
+  }
+  .slider{
+    margin-left: 18%;
+  }
+}
 
 
 /*-----------------FUENTES------------------*/

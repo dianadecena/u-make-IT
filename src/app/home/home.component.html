@@ -1,5 +1,10 @@
 <body>
-    <app-barra-superior></app-barra-superior>
+    <div *ngIf = "!admin">
+        <app-barra-superior></app-barra-superior>
+    </div>
+    <div *ngIf = "admin">
+        <app-barra-superior-admin></app-barra-superior-admin>
+    </div>
     <app-principal></app-principal>
     <app-footer></app-footer>
 </body>
