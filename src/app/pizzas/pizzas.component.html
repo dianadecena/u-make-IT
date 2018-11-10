@@ -1,4 +1,5 @@
- <div class="container-fluid sky">
+<app-barra-productos></app-barra-productos>
+<div class="container-fluid sky">
     <div class="row level-1">
                 <div class="stars"></div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -23,127 +24,26 @@
             </div>
                 
             <div class="row level-3">
-                <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 sub-level-2">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 sub-level-2 level-3" *ngFor="let pizza of pizzas">
                     <div class="container-product">
                         <div class="flex-container-product">
-                            <div class="pizza-pepperoni"></div>
+                            <img class="imagen-producto" src="{{pizza.data.imagen}}" />
                         </div>
                         <div class="flex-container-product-2">
                             <div class="box info">
-                                <div class="nombre-producto">Pizza pepperoni.</div>
-                                <div class="descripcion">Pizza con salsa, queso y pepperoni.</div>
-                                <div class="precio">30$</div>
+                                <div class="nombre-producto">{{pizza.data.nombre}}</div>
+                                <div class="descripcion">{{pizza.data.descripcion}}</div>
+                                <div class="precio">{{pizza.data.precio}}$</div>
                             </div>
                             <div class="flex-container-buttons">
                                 <div class="box agregar"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
-                                <div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div>
+                                <a [routerLink]="['/agregar', { id:pizza.id, nom:pizza.nombre, des:pizza.descripcion, pre:pizza.precio, ima:pizza.imagen, dis:pizza.disponible }]"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
                             </div>
                         </div>
-                        <div class="container-disponibilidad">Disponible</div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 sub-level-2">
-                    <div class="container-product">
-                        <div class="flex-container-product">
-                            <div class="pizza-aceitunas"></div>
-                        </div>
-                        <div class="flex-container-product-2">
-                            <div class="box info">
-                                <div class="nombre-producto">Pizza aceitunas.</div>
-                                <div class="descripcion">Salsa, queso, pimientos y aceitunas.</div>
-                                <div class="precio">30$</div>
-                            </div>
-                            <div class="flex-container-buttons">
-                                <div class="box agregar"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
-                                <div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div>
-                            </div>
-                        </div>
-                        <div class="container-disponibilidad">Disponible</div>
-                    </div>
-                </div>
-                
-                <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 sub-level-2">
-                    <div class="container-product">
-                        <div class="flex-container-product">
-                            <div class="pizza-champiñones"></div>
-                        </div>
-                        <div class="flex-container-product-2">
-                            <div class="box info">
-                                <div class="nombre-producto">Pizza champiñones.</div>
-                                <div class="descripcion">Salsa, queso, pimientos y champiñones.</div>
-                                <div class="precio">30$</div>
-                            </div>
-                            <div class="flex-container-buttons">
-                                <div class="box agregar"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
-                                <div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div>
-                            </div>
-                        </div>
-                        <div class="container-no-disponibilidad">No disponible</div>
+                        <div class="container-disponibilidad" *ngIf="pizza.data.disponible=='si'">Disponible</div>
+                        <div class="container-no-disponibilidad" *ngIf="pizza.data.disponible=='no'">No disponible</div>
                     </div>
                 </div>
             </div>
 
-            <div class="row level-3">
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 sub-level-2">
-                            <div class="container-product">
-                                <div class="flex-container-product">
-                                    <div class="pizza-pepperoni"></div>
-                                </div>
-                                <div class="flex-container-product-2">
-                                    <div class="box info">
-                                        <div class="nombre-producto">Pizza pepperoni.</div>
-                                        <div class="descripcion">Pizza con salsa, queso y pepperoni.</div>
-                                        <div class="precio">30$</div>
-                                    </div>
-                                    <div class="flex-container-buttons">
-                                        <div class="box agregar"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
-                                        <div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div>
-                                    </div>
-                                </div>
-                                <div class="container-disponibilidad">Disponible</div>
-                            </div>
-                        </div>
-        
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 sub-level-2">
-                            <div class="container-product">
-                                <div class="flex-container-product">
-                                    <div class="pizza-aceitunas"></div>
-                                </div>
-                                <div class="flex-container-product-2">
-                                    <div class="box info">
-                                        <div class="nombre-producto">Pizza aceitunas.</div>
-                                        <div class="descripcion">Salsa, queso, pimientos y aceitunas.</div>
-                                        <div class="precio">30$</div>
-                                    </div>
-                                    <div class="flex-container-buttons">
-                                        <div class="box agregar"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
-                                        <div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div>
-                                    </div>
-                                </div>
-                                <div class="container-disponibilidad">Disponible</div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 sub-level-2">
-                            <div class="container-product">
-                                <div class="flex-container-product">
-                                    <div class="pizza-champiñones"></div>
-                                </div>
-                                <div class="flex-container-product-2">
-                                    <div class="box info">
-                                        <div class="nombre-producto">Pizza champiñones.</div>
-                                        <div class="descripcion">Salsa, queso, pimientos y champiñones.</div>
-                                        <div class="precio">30$</div>
-                                    </div>
-                                    <div class="flex-container-buttons">
-                                        <div class="box agregar"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
-                                        <div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div>
-                                    </div>
-                                </div>
-                                <div class="container-no-disponibilidad">No disponible</div>
-                            </div>
-                        </div>
-            </div>
-        
-    </div>
+</div>

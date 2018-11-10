@@ -1,0 +1,43 @@
+<div class="container-fluid">
+            <div class="row level-2">
+                <div class="col-lg-6">
+                    <div class="container-product">
+                        <div class="flex-container-product">
+                            <div class="nuevo-producto"><div class="icon"><i class="fa fa-plus fa-4x"></i></div></div>
+                        </div>
+                        <div class="flex-container-product-2">
+                        <div class="box info">
+                        <form (ngSubmit)="newPizza(newPizzaForm.value)" [formGroup]="newPizzaForm">
+                        <input type="hidden" formControlName="id">
+
+                        <label for="nombre">Insertar nombre del producto</label>
+                        <input type="text" formControlName="nombre">
+
+                        <label for="descripcion">Insertar descripción del producto</label>
+                        <input type="text" formControlName="descripcion">
+
+                        <label for="precio">Insertar precio del producto</label>
+                        <input type="text" formControlName="precio">
+
+                        <label for="url_img">Imagen</label>
+                        <input type="url" formControlName="imagen">
+
+                        <label for="disponible">¿El producto está disponible?</label>
+                        <input type="text" formControlName="disponible">
+
+                        <input type="submit" class="btn--blue btn--add" [disabled]="!newPizzaForm.valid" [value]="(currentStatus == 1) ? 'Agregar' : 'Editar'">
+                        </form>
+                        </div>
+                        </div>
+                        <div class="container-disponibilidad">Disponible</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="producto-personalizable">Producto personalizable</div>
+                    <div class="personalizable-si">sí</div>
+                    <div class="personalizable-no">no</div>
+                    <div class="crear-producto">Crear producto</div>
+                </div>
+    </div>
+</div>

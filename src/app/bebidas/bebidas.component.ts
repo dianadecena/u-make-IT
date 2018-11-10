@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BebidasService } from '../services/bebidas.service';
 
 @Component({
   selector: 'app-bebidas',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BebidasComponent implements OnInit {
 
-  constructor() { }
+  public bebidas = [];
+
+  constructor(
+    private bebidasService: BebidasService
+  ) { }
 
   ngOnInit() {
+    this.bebidasService.getBebidas().subscribe((bebidasSnapshot) => {
+      this.bebidas = [];
+      bebidasSnapshot.forEach((bebidaData: any) => {
+        this.bebidas.push({
+          id: bebidaData.payload.doc.id,
+          data: bebidaData.payload.doc.data()
+        });
+      });
+    });
   }
 
 }

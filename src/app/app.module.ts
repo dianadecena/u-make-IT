@@ -26,6 +26,8 @@ import { LoginComponent } from './login/login.component';
 
 //servicios
 import {AuthService} from './auth.service';
+import { AgregarPizzaComponent } from './agregar-pizza/agregar-pizza.component';
+import { BarraProductosComponent } from './barra-productos/barra-productos.component';
 
 
 const appRoutes:Routes = [
@@ -54,6 +56,10 @@ const appRoutes:Routes = [
     component: PostresComponent
   },
   {
+    path: 'agregar-pizza',
+    component: AgregarPizzaComponent
+  },
+  {
     path: '',
     component: LoginComponent
   },
@@ -67,7 +73,7 @@ const appRoutes:Routes = [
   },
   {
     path: '**', redirectTo: 'home', pathMatch: 'full'
-  },
+  }
   ];
 
 @NgModule({
@@ -85,7 +91,9 @@ const appRoutes:Routes = [
     BarraSuperiorAdminComponent,
     PersonalizacionComponent,
     RegistroComponent,
-    LoginComponent],
+    LoginComponent,
+    AgregarPizzaComponent,
+    BarraProductosComponent],
 
   imports: [
     BrowserModule,
