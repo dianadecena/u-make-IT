@@ -70,6 +70,16 @@ a{
     margin-left: 35%;;
 }
 
+input:invalid {
+    border: 2px solid red;
+    box-shadow: 1px 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px  red;
+  }
+  
+input:valid {
+    border: 2px solid #00ff00;
+    box-shadow: 1px 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px  #00ff00;
+}
+
 @media screen and (max-width: 1150px) {
     
   }

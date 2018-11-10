@@ -60,7 +60,7 @@ export class AuthService {
       var email =firebase.auth().currentUser.email;
       return email;
     }else{
-          console.log("no se pudo recuperar el email del usuario");
+        console.log("no se pudo recuperar el email del usuario");
     }
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, createPlatformFactory } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, FormControlName } from '@angular/forms';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-registro',
@@ -10,8 +11,7 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 export class RegistroComponent implements OnInit {
 
   registerForm: FormGroup;
-  errorMessage: string = '';
-  successMessage: string = '';
+  mensaje : string = '';
 
   constructor(private auten: AuthService, private fb: FormBuilder) { 
     this.createForm();
@@ -25,7 +25,6 @@ export class RegistroComponent implements OnInit {
       password2:['',]
     });
   }
-
   ngOnInit() {
     this.auten.getUser();
   }
@@ -36,15 +35,24 @@ export class RegistroComponent implements OnInit {
       this.auten.doRegister(value)
       .then(res => {
         console.log(res);
-        this.successMessage = "Your account has been created";
-        this.auten.insertUser(value);
+        this.mensaje = "Su cuenta ha sida creada";
+        this.auten.insertUser(value); //Guarda email y userName en la base de datos
+        this.resetForm();
       }, err => {
         console.log(err);
-        this.errorMessage = err.message;
+        this.mensaje = err.message;
       })
     }else{
-      this.errorMessage = 'Las contraseñas ingresadas NO son iguales';
+      this.mensaje = 'Las contraseñas ingresadas NO son iguales';
     }
   }
+
+  resetForm(){//Resetea el formulario
+    if(this.registerForm != null){
+      this.registerForm.reset();
+      this.auten.selectedUser = new User;
+    } 
+  }
+
 
 }

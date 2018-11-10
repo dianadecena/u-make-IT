@@ -55,3 +55,19 @@ a{
     border-radius: 3px;
     color: white;
 }
+
+input:invalid {
+    border: 2px solid red;
+    box-shadow: 1px 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px  red;
+  }
+  
+input:valid {
+    border: 2px solid #00ff00;
+    box-shadow: 1px 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px  #00ff00;
+}
+
+textarea:focus, input:focus, input[type]:focus {
+    border-color:  #3333ff;
+    box-shadow: 1px 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px  #3333ff;
+    outline: 0 none;
+}

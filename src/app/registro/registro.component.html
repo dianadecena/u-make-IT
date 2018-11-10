@@ -7,19 +7,21 @@
       </div>
     
       <div class="container">
+
         <form [formGroup]="registerForm" id="cajaGeneral">
 
           <div class="form-group">
             <label>Correo Electrónico</label> <input type="email" 
             formControlName="email" 
             class="form-control" 
-            style="text-transform:lowercase;" 
+            style="text-transform:lowercase;"
+            autocomplete="on" 
             required>
           </div>
 
           <div class="form-group">
             <label>Nombre de Usuario</label>
-            <input type="text" formControlName="userName" class="form-control" required>
+            <input type="text" formControlName="userName" class="form-control"  maxlength="12" required>
           </div>
 
           <div class="form-group">
@@ -30,10 +32,8 @@
           <div class="form-group">
             <label>Confirma tu Contraseña</label>
             <input  type="password" class="form-control" formControlName="password2" required>
-            <label class="error">{{errorMessage}}</label>
-            <label class="success">{{successMessage}}</label>
+            <label class="error" id="mensaje">{{mensaje}}</label>
           </div>
-
         </form>
       </div>
 
