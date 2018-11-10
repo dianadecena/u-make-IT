@@ -23,20 +23,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-<<<<<<< HEAD
-//servicios
-import {AuthService} from './auth.service';
+import { AuthService } from './auth.service';
 import { AgregarPizzaComponent } from './agregar-pizza/agregar-pizza.component';
 import { BarraProductosComponent } from './barra-productos/barra-productos.component';
-=======
-// Servicios
-import { AuthService } from './auth.service';
->>>>>>> 725727dd86a9f721793776b098e399254f6108de
+import { PizzasService } from './services/pizzas.service';
+import { BebidasService } from './services/bebidas.service';
+import { AgregarBebidaComponent } from './agregar-bebida/agregar-bebida.component';
 
 
 const appRoutes:Routes = [
@@ -65,7 +63,7 @@ const appRoutes:Routes = [
     component: PostresComponent
   },
   {
-    path: 'agregar-pizza',
+    path: 'agregar',
     component: AgregarPizzaComponent
   },
   {
@@ -75,6 +73,10 @@ const appRoutes:Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'personalizar',
+    component: PersonalizacionComponent
   },
   {
     path: 'register',
@@ -102,7 +104,8 @@ const appRoutes:Routes = [
     RegistroComponent,
     LoginComponent,
     AgregarPizzaComponent,
-    BarraProductosComponent],
+    BarraProductosComponent,
+    AgregarBebidaComponent],
 
   imports: [
     BrowserModule,
@@ -117,6 +120,9 @@ const appRoutes:Routes = [
 
   providers: [
     AuthService,
+    AngularFirestore,
+    PizzasService,
+    BebidasService
   ],
 
   bootstrap: [AppComponent]

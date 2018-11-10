@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PizzasService } from '../services/pizzas.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-pizzas',
@@ -11,8 +12,10 @@ export class PizzasComponent implements OnInit {
   public pizzas = [];
 
   constructor(
-    private pizzasService: PizzasService
-  ) { }
+    private pizzasService: PizzasService,
+    private auten: AuthService) { }
+
+  public  admin = this.auten.isAdmin();
 
   ngOnInit() {
     this.pizzasService.getPizzas().subscribe((pizzasSnapshot) => {

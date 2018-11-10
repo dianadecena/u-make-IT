@@ -37,7 +37,8 @@
                             </div>
                             <div class="flex-container-buttons">
                                 <div class="box agregar"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
-                                <a [routerLink]="['/agregar', { id:pizza.id, nom:pizza.nombre, des:pizza.descripcion, pre:pizza.precio, ima:pizza.imagen, dis:pizza.disponible }]"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
+                                <a *ngIf = "admin" [routerLink]="['/agregar', { id:pizza.id }]"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
+                                <a *ngIf = "!admin" [routerLink]="['/personalizar']"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
                             </div>
                         </div>
                         <div class="container-disponibilidad" *ngIf="pizza.data.disponible=='si'">Disponible</div>

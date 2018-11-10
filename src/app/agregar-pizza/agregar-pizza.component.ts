@@ -24,8 +24,8 @@ export class AgregarPizzaComponent implements OnInit {
   });
 
   constructor(
-    private pizzasService: PizzasService,
-    private activatedRoute: ActivatedRoute) {
+  private pizzasService: PizzasService, 
+  private activatedRoute: ActivatedRoute) {
     this.newPizzaForm.setValue({
       id: '',
       nombre: '',
@@ -37,14 +37,9 @@ export class AgregarPizzaComponent implements OnInit {
   }
 
   ngOnInit() {
-   this.activatedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
     var id = params['id'];
-    var nom = params['nom'];
-    var des = params['des'];
-    var pre = params['pre'];
-    var ima = params['ima'];
-    var dis = params['dis'];
-    this.editPizza(id, nom, des, pre, ima, dis);
+    this.editPizza(id);
    });
 
    this.pizzasService.getPizzas().subscribe((pizzasSnapshot) => {
@@ -106,17 +101,17 @@ export class AgregarPizzaComponent implements OnInit {
     }
   }
 
-  public editPizza(documentId, nom, des, pre, ima, dis) {
+  public editPizza(documentId) {
     let editSubscribe = this.pizzasService.getPizza(documentId).subscribe((pizza) => {
       this.currentStatus = 2;
       this.documentId = documentId;
       this.newPizzaForm.setValue({
         id: documentId,
-        nombre: nom,
-        descripcion: des,
-        precio: pre,
-        imagen: ima,
-        disponible: dis
+        nombre: pizza.payload.data().nombre,
+        descripcion: pizza.payload.data().descripcion,
+        precio: pizza.payload.data().precio,
+        imagen: pizza.payload.data().imagen,
+        disponible: pizza.payload.data().disponible
       });
       editSubscribe.unsubscribe();
     });

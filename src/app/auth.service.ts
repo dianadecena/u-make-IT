@@ -79,7 +79,7 @@ export class AuthService {
   //Determina si el usuario que ingreaso es administrador o no
   isAdmin(){
     var user = firebase.auth().currentUser;
-    if(user.email=='danielmesa635@gmail.com'){
+    if(user.email=='danielmesa635@gmail.com' || user.email=='dianadecena78@gmail.com'){
         console.log("Es un administrador");
         return true;
     }else{
