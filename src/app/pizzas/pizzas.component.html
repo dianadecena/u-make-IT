@@ -27,13 +27,13 @@
                 <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 sub-level-2 level-3" *ngFor="let pizza of pizzas">
                     <div class="container-product">
                         <div class="flex-container-product">
-                            <img class="imagen-producto" src="{{pizza.data.imagen}}" />
+                            <img class="imagen-producto" src="{{pizza.imagen}}" />
                         </div>
                         <div class="flex-container-product-2">
                             <div class="box info">
-                                <div class="nombre-producto">{{pizza.data.nombre}}</div>
-                                <div class="descripcion">{{pizza.data.descripcion}}</div>
-                                <div class="precio">{{pizza.data.precio}}$</div>
+                                <div class="nombre-producto">{{pizza.nombre}}</div>
+                                <div class="descripcion">{{pizza.descripcion}}</div>
+                                <div class="precio">{{pizza.precio}}$</div>
                             </div>
                             <div class="flex-container-buttons">
                                 <div class="box agregar" *ngIf = "admin" (click)="deletePizza(pizza.id)"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
@@ -41,8 +41,8 @@
                                 <a *ngIf = "!admin" [routerLink]="['/personalizar']"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
                             </div>
                         </div>
-                        <div class="container-disponibilidad" *ngIf="pizza.data.disponible=='si'">Disponible</div>
-                        <div class="container-no-disponibilidad" *ngIf="pizza.data.disponible=='no'">No disponible</div>
+                        <div class="container-disponibilidad" *ngIf="pizza.disponible=='si'">Disponible</div>
+                        <div class="container-no-disponibilidad" *ngIf="pizza.disponible=='no'">No disponible</div>
                     </div>
                 </div>
             </div>

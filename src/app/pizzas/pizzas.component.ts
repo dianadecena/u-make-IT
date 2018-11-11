@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PizzasService } from '../services/pizzas.service';
-import { AuthService } from '../auth.service';
 import { Producto } from '../models/producto';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-pizzas',
@@ -9,34 +9,24 @@ import { Producto } from '../models/producto';
   styleUrls: ['./pizzas.component.css']
 })
 export class PizzasComponent implements OnInit {
+  pizzas:Producto[];
+  pizza: Producto = {
+    nombre:'',
+    descripcion:'',
+    precio:'',
+    imagen:'',
+    disponible:'',
+  }
+  folder:any;
 
-  public pizzas = [];
-  public documentId = null;
+  constructor(private pizzasService: PizzasService,
+  private auten: AuthService) {}
 
-  constructor(
-    private pizzasService: PizzasService,
-    private auten: AuthService) { }
-
-  public  admin = this.auten.isAdmin();
+  public admin = this.auten.isAdmin();
 
   ngOnInit() {
-    this.pizzasService.getPizzas().subscribe((pizzasSnapshot) => {
-      this.pizzas = [];
-      pizzasSnapshot.forEach((pizzaData: any) => {
-        this.pizzas.push({
-          id: pizzaData.payload.doc.id,
-          data: pizzaData.payload.doc.data()
-        });
-      });
-    });
+    this.pizzasService.getPizzas().subscribe(pizzas =>{
+      this.pizzas = pizzas;
+    })
   }
-
-  public deletePizza(documentId) {
-    this.pizzasService.deletePizza(documentId).then(() => {
-      console.log('Documento eliminado!');
-    }, (error) => {
-      console.error(error);
-    });
-  }
-
 }

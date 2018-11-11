@@ -30,11 +30,11 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { AuthService } from './auth.service';
-import { AgregarPizzaComponent } from './agregar-pizza/agregar-pizza.component';
 import { BarraProductosComponent } from './barra-productos/barra-productos.component';
 import { PizzasService } from './services/pizzas.service';
 import { BebidasService } from './services/bebidas.service';
 import { AgregarBebidaComponent } from './agregar-bebida/agregar-bebida.component';
+import { AgregarPizzaComponent } from './agregar-pizza/agregar-pizza.component';
 
 
 const appRoutes:Routes = [
@@ -63,12 +63,12 @@ const appRoutes:Routes = [
     component: PostresComponent
   },
   {
-    path: 'agregar',
-    component: AgregarPizzaComponent
-  },
-  {
     path: '',
     component: LoginComponent
+  },
+  {
+    path: 'agregar',
+    component: AgregarPizzaComponent
   },
   {
     path: 'login',
@@ -103,9 +103,9 @@ const appRoutes:Routes = [
     PersonalizacionComponent,
     RegistroComponent,
     LoginComponent,
-    AgregarPizzaComponent,
     BarraProductosComponent,
-    AgregarBebidaComponent],
+    AgregarBebidaComponent,
+    AgregarPizzaComponent],
 
   imports: [
     BrowserModule,

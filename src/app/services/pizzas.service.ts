@@ -1,38 +1,50 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Producto } from '../models/producto';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PizzasService {
+  productsCollection: AngularFirestoreCollection<Producto>;
+  products:Observable<Producto[]>;
+  pizzaDoc:AngularFirestoreDocument<Producto>;
 
-  constructor(
-    private firestore: AngularFirestore
-  ) {}
+  result:any;
 
-  //Crear nueva pizza
-  public createPizza(data: any) {
-    return this.firestore.collection('pizzas').add(data);
+  constructor(public angularFirestore:AngularFirestore) { 
+    this.productsCollection = this.angularFirestore.collection('pizzas');
+    this.products = this.productsCollection.snapshotChanges().pipe(map(changes =>{
+      return changes.map(a => {
+        const data = a.payload.doc.data() as Producto;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+   }
+   
+   getPizzas(){
+     return this.angularFirestore.collection('pizzas').snapshotChanges().pipe(map(changes =>{
+       return changes.map(a =>{
+         const data = a.payload.doc.data() as Producto;
+         data.id = a.payload.doc.id;
+         return data;
+       });
+     }));
+   }
+
+   addPizza(pizza:Producto){
+     this.productsCollection.add(pizza);
+   }
+
+  updatePizza(pizza: Producto) {
+    this.pizzaDoc = this.angularFirestore.doc(`pizzas/${pizza.id}`);
+    this.pizzaDoc.update(pizza);
   }
 
-  //Obtener una pizza
-  public getPizza(documentId: string) {
-    return this.firestore.collection('pizzas').doc(documentId).snapshotChanges();
+  deletePizza(pizza: Producto) {
+    this.pizzaDoc = this.angularFirestore.doc(`pizzas/${pizza.id}`);
+    this.pizzaDoc.delete();
   }
 
-  //Obtener todas las pizzas
-  public getPizzas() {
-    return this.firestore.collection('pizzas').snapshotChanges();
-  }
-
-  //Actualizar una pizza (editar producto)
-  public updatePizza(documentId: string, data: any) {
-    return this.firestore.collection('pizzas').doc(documentId).set(data);
-  }
-
-  //Borrar una pizza (eliminar producto)
-  public deletePizza(documentId: string) {
-    return this.firestore.collection('pizzas').doc(documentId).delete();
-  }
 }
