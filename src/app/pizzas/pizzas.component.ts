@@ -19,8 +19,10 @@ export class PizzasComponent implements OnInit {
   }
   folder:any;
 
-  constructor(private pizzasService: PizzasService,
-  private auten: AuthService) {}
+  editing: boolean = false;
+  editingPizza: Producto;
+
+  constructor(private pizzasService: PizzasService, private auten: AuthService) {}
 
   public admin = this.auten.isAdmin();
 
@@ -28,5 +30,20 @@ export class PizzasComponent implements OnInit {
     this.pizzasService.getPizzas().subscribe(pizzas =>{
       this.pizzas = pizzas;
     })
+  }
+
+  editPizza(event, pizza) {
+   this.editing = !this.editing;
+   this.editingPizza = pizza;
+  }
+
+  updatePizza() {
+   this.pizzasService.updatePizza(this.editingPizza);
+   this.editingPizza = {} as Producto;
+   this.editing = false;
+  }
+
+  deletePizza(event, pizza) {
+   this.pizzasService.deletePizza(pizza);
   }
 }

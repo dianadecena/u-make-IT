@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PizzasService } from "../services/pizzas.service";
 import { Producto } from "../models/producto";
-import { ActivatedRoute } from '@angular/router';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -19,22 +18,9 @@ export class AgregarPizzaComponent implements OnInit {
     disponible:'',
   };
 
-  newPizzaForm = new FormGroup({
-    nombre: new FormControl('', Validators.required),
-    descripcion: new FormControl('', Validators.required),
-    precio: new FormControl('', Validators.required),
-    imagen: new FormControl('', Validators.required),
-    disponible: new FormControl('', Validators.required)
-  });
-
-  constructor(private pizzasService: PizzasService,
-  private activatedRoute: ActivatedRoute) { }
+  constructor(private pizzasService: PizzasService) { }
 
   ngOnInit() {
-   this.activatedRoute.params.subscribe(params => {
-    var id = params['id'];
-    this.editarPizza(id);
-   });
   }
 
   onSubmit() {

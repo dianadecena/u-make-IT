@@ -37,7 +37,19 @@
                             </div>
                             <div class="flex-container-buttons">
                                 <div class="box agregar" *ngIf = "admin" (click)="deletePizza(pizza.id)"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
-                                <a *ngIf = "admin" [routerLink]="['/agregar', { id:pizza.id }]"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
+                                <a *ngIf = "admin" (click)="editPizza($event, pizza)"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
+                                <div *ngIf="editing && editingPizza.id == pizza.id">
+                                	<form (ngSubmit)="updatePizza(pizza)">
+                                		<input type="text" name="nombre" [(ngModel)]="editingPizza.nombre">
+                                		<input type="text" name="descripcion" [(ngModel)]="editingPizza.descripcion">
+                                		<input type="text" name="precio" [(ngModel)]="editingPizza.precio">
+                                		<input type="text" name="imagen" [(ngModel)]="editingPizza.imagen">
+                                		<input type="text" name="disponible" [(ngModel)]="editingPizza.disponible">
+                                	    <button type="submit">
+                                	    	Actualizar
+                                	    </button>
+                                	</form>
+                                </div>
                                 <a *ngIf = "!admin" [routerLink]="['/personalizar']"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
                             </div>
                         </div>
