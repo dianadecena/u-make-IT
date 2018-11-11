@@ -36,7 +36,7 @@
                                 <div class="precio">{{pizza.data.precio}}$</div>
                             </div>
                             <div class="flex-container-buttons">
-                                <div class="box agregar"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
+                                <div class="box agregar" *ngIf = "admin" (click)="deletePizza(pizza.id)"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
                                 <a *ngIf = "admin" [routerLink]="['/agregar', { id:pizza.id }]"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
                                 <a *ngIf = "!admin" [routerLink]="['/personalizar']"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
                             </div>

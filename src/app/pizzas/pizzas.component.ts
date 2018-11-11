@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PizzasService } from '../services/pizzas.service';
 import { AuthService } from '../auth.service';
+import { Producto } from '../models/producto';
 
 @Component({
   selector: 'app-pizzas',
@@ -10,6 +11,7 @@ import { AuthService } from '../auth.service';
 export class PizzasComponent implements OnInit {
 
   public pizzas = [];
+  public documentId = null;
 
   constructor(
     private pizzasService: PizzasService,
@@ -26,6 +28,14 @@ export class PizzasComponent implements OnInit {
           data: pizzaData.payload.doc.data()
         });
       });
+    });
+  }
+
+  public deletePizza(documentId) {
+    this.pizzasService.deletePizza(documentId).then(() => {
+      console.log('Documento eliminado!');
+    }, (error) => {
+      console.error(error);
     });
   }
 

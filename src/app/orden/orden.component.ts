@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from '@angular/router';
+import { PizzasService } from '../services/pizzas.service';
 
 @Component({
   selector: 'app-orden',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdenComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }
+
+
 
 }
