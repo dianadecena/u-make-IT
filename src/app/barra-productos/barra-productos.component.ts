@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-barra-productos',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarraProductosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auten: AuthService, private router: Router) { }
 
   ngOnInit() {
+    
+  }
+  
+  salir(){
+    this.auten.doLogout();
   }
 
 }
