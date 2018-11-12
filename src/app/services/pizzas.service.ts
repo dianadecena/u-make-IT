@@ -7,14 +7,14 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class PizzasService {
   productsCollection: AngularFirestoreCollection<Producto>;
-  products:Observable<Producto[]>;
+  pizzas:Observable<Producto[]>;
   pizzaDoc:AngularFirestoreDocument<Producto>;
 
   result:any;
 
   constructor(public angularFirestore:AngularFirestore) { 
     this.productsCollection = this.angularFirestore.collection('pizzas');
-    this.products = this.productsCollection.snapshotChanges().pipe(map(changes =>{
+    this.pizzas = this.productsCollection.snapshotChanges().pipe(map(changes =>{
       return changes.map(a => {
         const data = a.payload.doc.data() as Producto;
         data.id = a.payload.doc.id;
@@ -22,9 +22,9 @@ export class PizzasService {
       });
     }));
    }
-   
-   getPizzas(){
-     return this.angularFirestore.collection('pizzas').snapshotChanges().pipe(map(changes =>{
+
+   getPizzas() {
+    return this.angularFirestore.collection('pizzas').snapshotChanges().pipe(map(changes =>{
        return changes.map(a =>{
          const data = a.payload.doc.data() as Producto;
          data.id = a.payload.doc.id;

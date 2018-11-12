@@ -1,38 +1,51 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Producto } from '../models/producto';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BebidasService {
+  productsCollection: AngularFirestoreCollection<Producto>;
+  bebidas:Observable<Producto[]>;
+  bebidaDoc:AngularFirestoreDocument<Producto>;
+  product:AngularFirestoreDocument<Producto>;
 
-  constructor(
-    private firestore: AngularFirestore
-  ) {}
+  result:any;
 
-  //Crear nueva bebida
-  public createBebida(data: any) {
-    return this.firestore.collection('bebidas').add(data);
+  constructor(public angularFirestore:AngularFirestore) { 
+    this.productsCollection = this.angularFirestore.collection('bebidas');
+    this.bebidas = this.productsCollection.snapshotChanges().pipe(map(changes =>{
+      return changes.map(a => {
+        const data = a.payload.doc.data() as Producto;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+   }
+
+   getBebidas() {
+    return this.angularFirestore.collection('bebidas').snapshotChanges().pipe(map(changes =>{
+       return changes.map(a =>{
+         const data = a.payload.doc.data() as Producto;
+         data.id = a.payload.doc.id;
+         return data;
+       });
+     }));
+   }
+
+   addBebida(bebida:Producto){
+     this.productsCollection.add(bebida);
+   }
+
+  updateBebida(bebida: Producto) {
+    this.bebidaDoc = this.angularFirestore.doc(`bebidas/${bebida.id}`);
+    this.bebidaDoc.update(bebida);
   }
 
-  //Obtener una bebida
-  public getBebida(documentId: string) {
-    return this.firestore.collection('bebidas').doc(documentId).snapshotChanges();
+  deleteBebida(bebida: Producto) {
+    this.bebidaDoc = this.angularFirestore.doc(`bebidas/${bebida.id}`);
+    this.bebidaDoc.delete();
   }
 
-  //Obtener todas las bebidas
-  public getBebidas() {
-    return this.firestore.collection('bebidas').snapshotChanges();
-  }
-
-  //Actualizar una bebida (editar producto)
-  public updateBebida(documentId: string, data: any) {
-    return this.firestore.collection('bebidas').doc(documentId).set(data);
-  }
-
-  //Borrar una bebida (eliminar producto)
-  public deleteBebida(documentId: string) {
-    return this.firestore.collection('bebidas').doc(documentId).delete();
-  }
 }

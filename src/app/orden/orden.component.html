@@ -1,14 +1,15 @@
+<app-barra-superior></app-barra-superior>
 <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 col-xs-12">
                     <div class="container-orden">
                         <div class="orden">
-                            <div class="nombre-producto"><span></span></div>
-                            <div class="precio-producto"><span></span></div>
+                            <div class="nombre-producto" *ngFor="let nombre of nombres"><span>{{nombre}}</span></div>
+                            <div class="precio-producto" *ngFor="let precio of precios"><span>{{precio}}</span></div>
                             <div class="eliminar-producto"><i class="fa fa-trash fa-2x"></i></div>
                         </div>
                     </div>
-                    <div class="container-total"><div class="total-texto">Total a pagar:</div><div class="total-monto">100$</div>
+                    <div class="container-total"><div class="total-texto">Total a pagar:</div><div class="total-monto">{{total}}$</div>
                         <div class="terminar-pedido"><span>Finalizar pedido</span></div>
                     </div>
                 </div>

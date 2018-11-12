@@ -29,7 +29,7 @@ export class PizzasComponent implements OnInit {
   ngOnInit() {
     this.pizzasService.getPizzas().subscribe(pizzas =>{
       this.pizzas = pizzas;
-    })
+    });
   }
 
   editPizza(event, pizza) {
@@ -46,4 +46,5 @@ export class PizzasComponent implements OnInit {
   deletePizza(event, pizza) {
    this.pizzasService.deletePizza(pizza);
   }
+
 }

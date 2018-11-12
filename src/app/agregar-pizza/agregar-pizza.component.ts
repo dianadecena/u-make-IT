@@ -24,7 +24,7 @@ export class AgregarPizzaComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.pizza.nombre != '' && this.pizza.descripcion != '') {
+    if (this.pizza.disponible == 'si' || this.pizza.disponible == 'no') {
       this.pizzasService.addPizza(this.pizza);
       this.pizza.nombre = '';
       this.pizza.descripcion = '';
