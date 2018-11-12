@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { ReactiveFormsModule, FormGroup, FormBuilder, Validators,FormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-change-password',
@@ -10,8 +10,7 @@ import { ReactiveFormsModule, FormGroup, FormBuilder, Validators,FormsModule } f
 export class ChangePasswordComponent implements OnInit {
 
   changeForm: FormGroup;
-  errorMessage: string = '';
-  successMessage: string = '';
+  Mensaje: string = '';
 
   constructor(private auten: AuthService, private fb: FormBuilder) { 
     this.createForm();
@@ -19,6 +18,7 @@ export class ChangePasswordComponent implements OnInit {
 
   createForm() {
     this.changeForm = this.fb.group({
+      passwordActual: ['', ],
       password: ['', ],
       password2: ['',]
     });
@@ -30,11 +30,16 @@ export class ChangePasswordComponent implements OnInit {
 
   tryChangePassword(value){
     if(value.password == value.password2){
-      this.auten.doChangePassword(value);
-      this.successMessage = 'La contraseña se ha cambiado correctamente';
+       var p = this.auten.doChangePassword(value);
     }else{
-      this.errorMessage = 'Las contraseñas ingresadas NO son iguales';
+      this.Mensaje = 'Las contraseñas ingresadas NO son iguales';
     }
-    
+    this.resetForm();
+  }
+
+  resetForm(){//Resetea el formulario
+    if(this.changeForm != null){
+      this.changeForm.reset();
+    } 
   }
 }
