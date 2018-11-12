@@ -6,10 +6,9 @@
     <span></span>
     <ul id="menu">
       <a routerLink="/home"><li>Home</li></a>
-      <a routerLink="/orden"><li>Cambio de clave</li></a>
-      <a href="#"><li>Productos</li></a>
-      <a href="#"><li>Salir</li></a>
-      <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
+      <a [routerLink]="['/change-password']"><li>Cambio de clave</li></a>
+      <a [routerLink]="['/pizzas']"><li>Productos</li></a>
+      <li><a (click)="salir()">Salir</a></li> 
     </ul>
   </div>
 </nav>
