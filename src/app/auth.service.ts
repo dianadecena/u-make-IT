@@ -45,12 +45,21 @@ export class AuthService {
     });
   }
   
-  doChangePassword(value){
-    var user  = firebase.auth().currentUser; 
-    user.updatePassword(value.password).then(function() {
+doChangePassword(value){
+    var user = firebase.auth().currentUser;
+    var credential = firebase.auth.EmailAuthProvider.credential(
+        user.email, 
+        value.passwordActual
+    );  
+    user.reauthenticateAndRetrieveDataWithCredential(credential).then(function() {
+      console.log("se reutentico");
+      user.updatePassword(value.password).then(function() {
         console.log("Se cambio correctamente la contraseña");
-    }).catch(function(error) {
+      }).catch(function(error) {
         console.log("NO se pudo cambiar contraseña");
+      });
+    }).catch(function(error) {
+        console.log("NO se reutentico");
     });
 }
 
