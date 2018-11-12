@@ -13,7 +13,7 @@ export class AgregarPizzaComponent implements OnInit {
   pizza: Producto = {
     nombre:'',
     descripcion:'',
-    precio:'',
+    precio,
     imagen:'',
     disponible:'',
   };
