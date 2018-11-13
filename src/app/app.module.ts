@@ -71,6 +71,10 @@ const appRoutes:Routes = [
     component: AgregarPizzaComponent
   },
   {
+    path: 'agregarB',
+    component: AgregarBebidaComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },

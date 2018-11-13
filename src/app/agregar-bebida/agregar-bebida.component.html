@@ -1,6 +1,9 @@
 <div class="container-fluid">
     <app-barra-superior-admin></app-barra-superior-admin>
 </div>
+<div class="tituloN">
+        <h1 class="texto-bebidas">Agregar Bebidas</h1>
+</div>
 <div class="container-fluid">
             <div class="row level-2">
                 <div class="col-lg-6">
@@ -11,21 +14,22 @@
                         <div class="flex-container-product-2">
                         <div class="box info">
                         <form (ngSubmit)="onSubmit()">
+
                         <input type="hidden" formControlName="id">
 
                         <label for="nombre">Insertar nombre del producto</label>
-                        <input type="text" placeholder="Inserte nombre del producto..." [(ngModel)]="pizza.nombre" name="nombre" id="nombre">
+                        <input type="text" placeholder="Inserte nombre del producto..." [(ngModel)]="bebida.nombre" name="nombre" id="nombre">
 
                         <label for="descripcion">Insertar descripción del producto</label>
-                        <input type="text" placeholder="Inserte descripción del producto..." [(ngModel)]="pizza.descripcion" name="descripcion" id="descripcion">
+                        <input type="text" placeholder="Inserte descripción del producto..." [(ngModel)]="bebida.descripcion" name="descripcion" id="descripcion">
 
                         <label for="precio">Insertar precio del producto</label>
-                        <input type="text" placeholder="Inserte precio del producto..." [(ngModel)]="pizza.precio" name="precio" id="precio">
+                        <input type="number" placeholder="Inserte precio del producto..." [(ngModel)]="bebida.precio" name="precio" id="precio">
 
                         <label for="url_img">Imagen</label>
-                        <input type="text" placeholder="Inserte url del producto..." [(ngModel)]="pizza.imagen" name="imagen" id="imagen">
+                        <input type="text" placeholder="Inserte url del producto..." [(ngModel)]="bebida.imagen" name="imagen" id="imagen">
 
-                        <label for="disponible"><span>¿El producto está disponible?</span><input type="text" placeholder="Inserte disponibilidad..." [(ngModel)]="pizza.disponible" name="disponible" id="disponible">
+                        <label for="disponible"><span>¿El producto está disponible?</span><input type="text" placeholder="Inserte disponibilidad..." [(ngModel)]="bebida.disponible" name="disponible" id="disponible">
                         <span class="error" aria-live="polite"></span>
                         </label>
 
