@@ -76,6 +76,10 @@ const appRoutes:Routes = [
     component: AgregarBebidaComponent
   },
   {
+    path: 'agregarP',
+    component: AgregarPostreComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
@@ -128,7 +132,8 @@ const appRoutes:Routes = [
     AuthService,
     AngularFirestore,
     PizzasService,
-    BebidasService
+    BebidasService,
+    PostresService
   ],
 
   bootstrap: [AppComponent]
