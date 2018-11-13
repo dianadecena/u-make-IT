@@ -11,7 +11,6 @@ import { Item } from '../models/item';
 })
 export class PizzasComponent implements OnInit {
   pizzas:Producto[];
-  private items: Item[] = [];
   combinedArray: { nombres: any, precios: any }[] = [];
   pizza: Producto = {
     nombre:'',
@@ -52,8 +51,8 @@ export class PizzasComponent implements OnInit {
 
   addToCart(n: string, p: number) {
      var item: Item = {
-      nombre: n;
-      precio: p;
+      nombre: n,
+      precio: p
      }
      let cart: any = [];
      cart.push(JSON.stringify(item));

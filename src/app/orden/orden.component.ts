@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Item } from '../models/item';
 
 @Component({
   selector: 'app-orden',
@@ -9,12 +10,20 @@ import { Component, OnInit } from "@angular/core";
 export class OrdenComponent implements OnInit {
 
   private total: number = 0;
-  public cart = JSON.parse(localStorage.getItem('cartItems'));
-  public prices = JSON.parse(localStorage.getItem('priceItems'));
+  private items: Item[] = [];
  
   constructor() {}
 
   ngOnInit() {
+    this.items = [];
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    for(var i=0; i<cart.length; i++) {
+      let item = JSON.parse(cart[i]);
+      this.items.push({
+       nombre: item.nombre,
+       precio: item.precio
+      });
+    }
   }
 
 }
