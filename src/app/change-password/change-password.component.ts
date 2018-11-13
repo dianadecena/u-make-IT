@@ -11,6 +11,8 @@ export class ChangePasswordComponent implements OnInit {
 
   changeForm: FormGroup;
   Mensaje: string = '';
+  
+  public  admin = this.auten.isAdmin();
 
   constructor(private auten: AuthService, private fb: FormBuilder) { 
     this.createForm();
