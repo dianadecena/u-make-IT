@@ -35,6 +35,7 @@ import { PizzasService } from './services/pizzas.service';
 import { BebidasService } from './services/bebidas.service';
 import { AgregarBebidaComponent } from './agregar-bebida/agregar-bebida.component';
 import { AgregarPizzaComponent } from './agregar-pizza/agregar-pizza.component';
+import { AgregarPostreComponent } from './agregar-postre/agregar-postre.component';
 
 
 const appRoutes:Routes = [
@@ -109,7 +110,8 @@ const appRoutes:Routes = [
     LoginComponent,
     BarraProductosComponent,
     AgregarBebidaComponent,
-    AgregarPizzaComponent],
+    AgregarPizzaComponent,
+    AgregarPostreComponent],
 
   imports: [
     BrowserModule,
