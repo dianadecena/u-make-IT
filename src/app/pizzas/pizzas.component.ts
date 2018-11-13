@@ -54,9 +54,29 @@ export class PizzasComponent implements OnInit {
       nombre: n,
       precio: p
      }
-     let cart: any = [];
-     cart.push(JSON.stringify(item));
-     localStorage.setItem('cart', JSON.stringify(cart));
+     if (localStorage.getItem('cart') == null) {
+          let cart: any = [];
+          cart.push(JSON.stringify(item));
+          localStorage.setItem('cart', JSON.stringify(cart));
+        } else {
+          let cart: any = JSON.parse(localStorage.getItem('cart'));
+          let index: number = -1;
+          for (var i = 0; i < cart.length; i++) {
+            let item: Item = JSON.parse(cart[i]);
+            if (item.nombre == n) {
+              index = i;
+              break;
+            }
+          }
+          if (index == -1) {
+            cart.push(JSON.stringify(item));
+            localStorage.setItem('cart', JSON.stringify(cart));
+          } else {
+            let item: Item = JSON.parse(cart[index]);
+            cart[index] = JSON.stringify(item);
+            localStorage.setItem("cart", JSON.stringify(cart));
+          }
   }
 
+}
 }

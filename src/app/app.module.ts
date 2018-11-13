@@ -33,6 +33,7 @@ import { AuthService } from './auth.service';
 import { BarraProductosComponent } from './barra-productos/barra-productos.component';
 import { PizzasService } from './services/pizzas.service';
 import { BebidasService } from './services/bebidas.service';
+import { PostresService } from './services/postres.service';
 import { AgregarBebidaComponent } from './agregar-bebida/agregar-bebida.component';
 import { AgregarPizzaComponent } from './agregar-pizza/agregar-pizza.component';
 import { AgregarPostreComponent } from './agregar-postre/agregar-postre.component';

@@ -20,7 +20,7 @@ export class AgregarPostreComponent implements OnInit {
 
   mensaje : string = '';
 
-  constructor(private BebidasService: PostresService) { }
+  constructor(private postresService: PostresService) { }
 
   ngOnInit() {
   }
@@ -28,7 +28,7 @@ export class AgregarPostreComponent implements OnInit {
   onSubmit() {
     if ((this.postre.disponible == 'si'  || this.postre.disponible == 'no') && this.postre.precio != ""  &&
      this.postre.imagen.length > 0 && this.postre.nombre.length > 0 && this.postre.descripcion.length > 0 ) {
-      this.BebidasService.addPostre(this.postre);
+      this.postresService.addPostre(this.postre);
       this.postre.nombre = '';
       this.postre.descripcion = '';
       this.postre.precio = '';
