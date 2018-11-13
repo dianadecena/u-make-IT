@@ -3,13 +3,13 @@
             <div class="row">
                 <div class="col-md-12 col-xs-12">
                     <div class="container-orden">
-                        <div class="orden">
-                            <div class="nombre-producto" *ngFor="let nombre of nombres"><span>{{nombre}}</span></div>
-                            <div class="precio-producto" *ngFor="let precio of precios"><span>{{precio}}</span></div>
+                        <div class="orden" *ngFor="let item of cart; let i=index">
+                            <div class="nombre-producto"><span>{{p}}</span></div>
+                            <div class="precio-producto"><span>{{i}}</span></div>
                             <div class="eliminar-producto"><i class="fa fa-trash fa-2x"></i></div>
                         </div>
                     </div>
-                    <div class="container-total"><div class="total-texto">Total a pagar:</div><div class="total-monto">{{total}}$</div>
+                    <div class="container-total"><div class="total-texto">Total a pagar:</div><div class="total-monto">$</div>
                         <div class="terminar-pedido"><span>Finalizar pedido</span></div>
                     </div>
                 </div>

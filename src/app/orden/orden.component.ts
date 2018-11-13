@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-orden',
@@ -9,24 +8,13 @@ import { ActivatedRoute } from '@angular/router';
 
 export class OrdenComponent implements OnInit {
 
-  private nombres = [];
-  private precios = [];
   private total: number = 0;
-
-  constructor(private activatedRoute: ActivatedRoute) {}
+  public cart = JSON.parse(localStorage.getItem('cartItems'));
+  public prices = JSON.parse(localStorage.getItem('priceItems'));
+ 
+  constructor() {}
 
   ngOnInit() {
-   this.activatedRoute.params.subscribe(params => {
-     var nombre = params['nombre'];
-     var precio = params['precio'];
-     this.nombres.push(nombre);
-     this.precios.push(precio);
-     this.calcularTotal(precio);
-   });
-  }
-
-  calcularTotal(precio) {
-    this.total += precio;
   }
 
 }

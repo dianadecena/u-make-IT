@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PizzasService } from '../services/pizzas.service';
 import { Producto } from '../models/producto';
 import { AuthService } from '../auth.service';
+import { Item } from '../models/item';
 
 @Component({
   selector: 'app-pizzas',
@@ -10,6 +11,8 @@ import { AuthService } from '../auth.service';
 })
 export class PizzasComponent implements OnInit {
   pizzas:Producto[];
+  private items: Item[] = [];
+  combinedArray: { nombres: any, precios: any }[] = [];
   pizza: Producto = {
     nombre:'',
     descripcion:'',
@@ -45,6 +48,16 @@ export class PizzasComponent implements OnInit {
 
   deletePizza(event, pizza) {
    this.pizzasService.deletePizza(pizza);
+  }
+
+  addToCart(n: string, p: number) {
+     var item: Item = {
+      nombre: n;
+      precio: p;
+     }
+     let cart: any = [];
+     cart.push(JSON.stringify(item));
+     localStorage.setItem('cart', JSON.stringify(cart));
   }
 
 }
