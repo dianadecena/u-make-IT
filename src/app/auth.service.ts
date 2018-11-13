@@ -96,5 +96,15 @@ doChangePassword(value){
         return false;
     }
   }
+  
+  tryResetPassword(value){
+    var auth = firebase.auth();
+    var emailAddress = value.email;
+    auth.sendPasswordResetEmail(emailAddress).then(function() {
+        console.log("Se envio el correo");
+    }).catch(function(error) {
+       console.log("NO se envio el correo");
+    });
+  }
  
 }
