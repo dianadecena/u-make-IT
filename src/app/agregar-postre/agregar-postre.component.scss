@@ -1,0 +1,253 @@
+.texto-postres {
+    font-family: Quicksand;
+    color: rgb(253, 123, 156);
+    margin-top: 30px;
+    font-size: 4em;
+    text-shadow: 0 0 30px rgb(255, 68, 115);
+    padding: 0;
+    font-weight: bolder;
+}
+
+
+.tituloN{
+    margin-left: auto;
+    width: 65%;
+}
+
+.container-fluid{
+    margin-top: 100px;
+}
+
+.level-2 {
+    margin-top: 20px;
+}
+
+.level-3 {
+    margin-top: 3px;
+}
+
+.nuevo-producto {
+    text-align: center;
+    opacity: 0.9;
+}
+
+.icon {
+    margin-top: 20px;
+}
+
+.flex-container-product {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-container-product > div {
+    flex: 1 1 auto;
+    height: 120px;
+    border: none;
+    border-color: transparent;
+    border-width: 0.5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 6px rgb(164, 165, 162);
+    font-size: 16px;
+    margin: 10px 10px 3px 10px;
+}
+
+.flex-container-product-2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-container-product-2 .box {
+    background-color: #fff;
+    flex: 1 1 20px;
+    border: none;
+    border-color: transparent;
+    border-width: 1px;
+    border-radius: 9px;
+    box-shadow: 2px 3px 6px rgb(162, 168, 155);
+    margin: 3px 3px 5px 5px;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.flex-container-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-container-buttons > div {
+    background-color: white;
+    border: none;
+    border-width: 1px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.container-disponibilidad {
+    background: linear-gradient(to right, rgb(154, 253, 73), rgb(75, 253, 134));
+    border-radius: 9px;
+    opacity: 0.9;
+    box-shadow: 2px 2px 6px rgb(164, 165, 162);
+    margin: 3px 10px 5px 10px;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.container-no-disponibilidad {
+    background: linear-gradient(to right, rgb(255, 194, 124), rgb(236, 4, 4));
+    border-radius: 9px;
+    opacity: 0.9;
+    box-shadow: 2px 2px 6px rgb(164, 165, 162);
+    margin: 3px 10px 5px 10px;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.producto-personalizable {
+    background: #fff;
+    border-radius: 9px;
+    opacity: 0.9;
+    box-shadow: 2px 2px 6px rgb(164, 165, 162);
+    margin: 3px 10px 5px 10px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 50px;
+    width: 200px;
+    margin-left: 120px;
+}
+
+.crear-producto {
+    background: linear-gradient(to right, rgb(255, 216, 88), rgb(255, 116, 62));
+    border-radius: 18px;
+    opacity: 0.9;
+    box-shadow: 2px 2px 6px rgb(164, 165, 162);
+    margin: 3px 10px 5px 10px;
+    padding: 5px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-top: 80px;
+    width: 200px;
+    margin-left: 120px;
+}
+
+.personalizable-si {
+    background: #fff;
+    border-radius: 9px;
+    opacity: 0.9;
+    border: solid;
+    border-color: rgb(75, 253, 134);
+    border-width: 1.5px;
+    margin: 3px 10px 5px 10px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    width: 200px;
+    margin-left: 120px;
+}
+
+.personalizable-no {
+    background: #fff;
+    border-radius: 9px;
+    opacity: 0.9;
+    border: solid;
+    border-color: rgb(236, 4, 4);
+    border-width: 1.5px;
+    margin: 3px 10px 5px 10px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    width: 200px;
+    margin-left: 120px;
+}
+
+.precio {
+    font-size: 36px;
+}
+
+.info {
+    color: #000000 !important;
+    flex: 1 1 250px !important;
+    text-align: center;
+    margin-bottom: 5px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
+
+.agregar {
+    background-color: rgb(255, 174, 119) !important;
+    color: #fff;
+    margin-right: 10px !important;
+    box-shadow: 0px 0px 8px #b8b5b5 !important;
+}
+
+.agregar:hover {
+    background: transparent;
+    color: #000000;
+}
+
+.personalizar:hover {
+    background: transparent;
+    color: #000000;
+}
+
+.personalizar {
+    background-color: rgb(252, 81, 13) !important;
+    color: #fff;
+    margin-top: 2px !important;
+    margin-bottom: 5px !important;
+    margin-right: 10px !important;
+    box-shadow: 0px 0px 8px #b8b5b5 !important;
+}
+
+.sub-level-2 {
+    margin-top: 40px;
+}
+
+.container-product {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(189, 189, 189);
+    border-radius: 5px;
+    width: auto;
+    margin-left: 40px;
+}
+
+.texto {
+    margin-top: 20px;
+}
+
+.total {
+    font-size: 40px;
+}
+
+@media (max-width: 576px) {
+    .texto-postres {
+        font-size: 5em !important;
+        margin-top: 10px !important;
+        margin-left: 68px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .texto-postres {
+        font-size: 4em;
+        margin-top: 30px;
+    }
+}
