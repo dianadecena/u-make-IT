@@ -71,3 +71,14 @@ textarea:focus, input:focus, input[type]:focus {
     box-shadow: 1px 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px  #3333ff;
     outline: 0 none;
 }
+
+#BnR{
+   border: none;
+   color: white;
+   background: black;
+   font-size: 1.2em;
+}
+
+#BnR:hover{
+    border-bottom: 2px solid white; 
+}

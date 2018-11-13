@@ -38,6 +38,16 @@ export class LoginComponent implements OnInit {
         this.errorMessage = err.message;
       })
     }
+  
+  tryReset(value){
+      if(value.email != ""){
+        this.authService.tryResetPassword(value);
+        this.errorMessage = "Revise su Correo Electrónico";
+      }else{
+        this.errorMessage = "Ingrese su Correo Electrónico";
+      }
+    }
+
 
   ngOnInit() {
   }
