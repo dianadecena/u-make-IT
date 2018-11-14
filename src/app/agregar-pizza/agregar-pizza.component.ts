@@ -10,6 +10,7 @@ import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
   encapsulation: ViewEncapsulation.None
 })
 export class AgregarPizzaComponent implements OnInit {
+  public mensaje: string;
   pizza: Producto = {
     nombre:'',
     descripcion:'',
