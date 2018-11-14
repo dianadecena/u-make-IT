@@ -4,6 +4,8 @@ import * as firebase from 'firebase/app';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import { Router} from '@angular/router';
 
+import {ToastrManager} from 'ng6-toastr-notifications';
+
 //Importando una clase
 import {User} from './models/user';
 
@@ -16,13 +18,17 @@ export class AuthService {
   userList: AngularFireList<any>;
   selectedUser: User = new User();
   
-  constructor(public afAuth: AngularFireAuth,private router: Router,private fire: AngularFireDatabase ) { }
+  constructor(public afAuth: AngularFireAuth,
+    private router: Router,private fire: AngularFireDatabase,
+    private toastr: ToastrManager 
+  ) { }
 
   doRegister(value){
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
       .then(res => {
         resolve(res);
+        this.toastr.successToastr('OPERACION EXITOSA','Se ha registrado exitosamente');
       }, err => reject(err))
     })
   }
@@ -54,12 +60,12 @@ doChangePassword(value){
     user.reauthenticateAndRetrieveDataWithCredential(credential).then(function() {
       console.log("se reutentico");
       user.updatePassword(value.password).then(function() {
-        console.log("Se cambio correctamente la contraseña");
+        this.toastr.successToastr('OPERACION EXITOSA','Se cambio la contraseña exitosamente');
       }).catch(function(error) {
         console.log("NO se pudo cambiar contraseña");
       });
     }).catch(function(error) {
-        console.log("NO se reutentico");
+      this.toastr.errorToastr('La contraseña actual ingresada es erronea','HUBO UN ERROR');
     });
 }
 

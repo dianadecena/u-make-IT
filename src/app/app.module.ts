@@ -38,6 +38,8 @@ import { AgregarBebidaComponent } from './agregar-bebida/agregar-bebida.componen
 import { AgregarPizzaComponent } from './agregar-pizza/agregar-pizza.component';
 import { AgregarPostreComponent } from './agregar-postre/agregar-postre.component';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ng6-toastr-notifications';
 
 const appRoutes:Routes = [
   {
@@ -126,7 +128,9 @@ const appRoutes:Routes = [
     AngularFireAuthModule, 
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
 
   providers: [

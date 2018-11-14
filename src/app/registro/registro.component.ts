@@ -1,7 +1,8 @@
-import { Component, OnInit, createPlatformFactory } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { FormGroup, FormControl, FormBuilder, FormControlName } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { User } from '../models/user';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-registro',
@@ -13,7 +14,7 @@ export class RegistroComponent implements OnInit {
   registerForm: FormGroup;
   mensaje : string = '';
 
-  constructor(private auten: AuthService, private fb: FormBuilder) { 
+  constructor(private auten: AuthService, private fb: FormBuilder, private toastr: ToastrManager ) { 
     this.createForm();
   }
 
@@ -35,15 +36,14 @@ export class RegistroComponent implements OnInit {
       this.auten.doRegister(value)
       .then(res => {
         console.log(res);
-        this.mensaje = "Su cuenta ha sida creada";
         this.auten.insertUser(value); //Guarda email y userName en la base de datos
         this.resetForm();
       }, err => {
         console.log(err);
-        this.mensaje = err.message;
+        this.toastr.errorToastr(err.message,'HUBO UN ERROR');
       })
     }else{
-      this.mensaje = 'Las contraseñas ingresadas NO son iguales';
+      this.toastr.errorToastr('Las contraseñas ingresadas no son iguales','HUBO UN ERROR');
     }
   }
 
