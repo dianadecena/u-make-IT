@@ -15,22 +15,12 @@ export class OrdenComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.total = 0;
-    this.items = [];
-    let cart = JSON.parse(localStorage.getItem('cart'));
-    for(var i=0; i<cart.length; i++) {
-      let item = JSON.parse(cart[i]);
-      this.items.push({
-       nombre: item.nombre,
-       precio: item.precio
-      });
-      this.total += item.precio;
-    }
+    this.loadCart();
   }
 
   loadCart(): void {
-   this.total = 0;
    this.items = [];
+   this.total = 0;
     let cart = JSON.parse(localStorage.getItem('cart'));
     for(var i=0; i<cart.length; i++) {
       let item = JSON.parse(cart[i]);
@@ -43,8 +33,9 @@ export class OrdenComponent implements OnInit {
   }
 
   eliminar(nombre: string): void {
-   let cart: any = JSON.parse(localStorage.getItem('cart'));
-   for(var i=0; i<cart.length; i++) {
+   if(confirm("¿Estás seguro que deseas borrar este producto?")) {
+    let cart: any = JSON.parse(localStorage.getItem('cart'));
+    for(var i=0; i<cart.length; i++) {
     let item: Item = JSON.parse(cart[i]);
      if(item.nombre == nombre) {
        cart.splice(i, 1);
@@ -53,6 +44,7 @@ export class OrdenComponent implements OnInit {
    }
    localStorage.setItem("cart", JSON.stringify(cart));
    this.loadCart();
+   } 
   }
 
 }

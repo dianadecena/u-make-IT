@@ -35,7 +35,8 @@
                                 <div class="precio">{{bebida.precio}}$</div>
                             </div>
                             <div class="flex-container-buttons">
-                                <a [routerLink]="['/orden', { nombre:bebida.nombre, precio:bebida.precio }]"><div class="box agregar" *ngIf = "!admin"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div></a>
+                                <div class="box agregar" *ngIf = "!admin" (click)="addToCart(bebida.nombre, bebida.precio)"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
+                                <div class="box agregar" *ngIf = "admin" (click)="deleteBebida($event, bebida)"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
                                 <a *ngIf = "admin" (click)="editBebida($event, bebida)"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
                                 <a *ngIf = "!admin" [routerLink]="['/personalizar']"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
                                 </div>

@@ -46,7 +46,9 @@ export class PizzasComponent implements OnInit {
   }
 
   deletePizza(event, pizza) {
-   this.pizzasService.deletePizza(pizza);
+   if(confirm("¿Estás seguro que deseas borrar este producto?")) {
+     this.pizzasService.deletePizza(pizza);
+   } 
   }
 
   addToCart(n: string, p: number) {
@@ -77,6 +79,7 @@ export class PizzasComponent implements OnInit {
             localStorage.setItem("cart", JSON.stringify(cart));
           }
   }
+  alert("Has agregado una pizza al carrito");
 
 }
 }

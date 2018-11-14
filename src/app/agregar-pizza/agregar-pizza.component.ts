@@ -10,6 +10,7 @@ import {ToastrManager} from 'ng6-toastr-notifications';
   encapsulation: ViewEncapsulation.None
 })
 export class AgregarPizzaComponent implements OnInit {
+  public mensaje: string;
   pizza: Producto = {
     nombre:'',
     descripcion:'',

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BebidasService } from '../services/bebidas.service';
 import { Producto } from '../models/producto';
 import { AuthService } from '../auth.service';
+import { Item } from '../models/item';
 
 @Component({
   selector: 'app-bebidas',
@@ -44,7 +45,41 @@ export class BebidasComponent implements OnInit {
   }
 
   deleteBebida(event, bebida) {
-   this.bebidasService.deleteBebida(bebida);
+   if(confirm("¿Estás seguro que deseas borrar este producto?")) {
+     this.bebidasService.deleteBebida(bebida);
+   } 
   }
+
+   addToCart(n: string, p: number) {
+     var item: Item = {
+      nombre: n,
+      precio: p
+     }
+     if (localStorage.getItem('cart') == null) {
+          let cart: any = [];
+          cart.push(JSON.stringify(item));
+          localStorage.setItem('cart', JSON.stringify(cart));
+        } else {
+          let cart: any = JSON.parse(localStorage.getItem('cart'));
+          let index: number = -1;
+          for (var i = 0; i < cart.length; i++) {
+            let item: Item = JSON.parse(cart[i]);
+            if (item.nombre == n) {
+              index = i;
+              break;
+            }
+          }
+          if (index == -1) {
+            cart.push(JSON.stringify(item));
+            localStorage.setItem('cart', JSON.stringify(cart));
+          } else {
+            let item: Item = JSON.parse(cart[index]);
+            cart[index] = JSON.stringify(item);
+            localStorage.setItem("cart", JSON.stringify(cart));
+          }
+  }
+  alert("Has agregado una bebida al carrito");
+
+}
 
 }
