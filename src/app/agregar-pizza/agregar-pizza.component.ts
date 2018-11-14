@@ -18,6 +18,8 @@ export class AgregarPizzaComponent implements OnInit {
     disponible:'',
   };
 
+  mensaje : string = '';
+  
   constructor(private pizzasService: PizzasService) { }
 
   ngOnInit() {
