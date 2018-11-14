@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Router, Params } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +13,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  errorMessage: string = '';
 
   constructor(
     public authService: AuthService,
     private router: Router,
-    private fb: FormBuilder) 
+    private fb: FormBuilder,
+    private toastr: ToastrManager) 
     { 
       this.createForm();
     }
@@ -35,16 +36,16 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
       }, err => {
         console.log(err);
-        this.errorMessage = err.message;
+        this.toastr.errorToastr(err.message, 'HUBO UN ERROR');
       })
     }
   
   tryReset(value){
       if(value.email != ""){
         this.authService.tryResetPassword(value);
-        this.errorMessage = "Revise su Correo Electrónico";
+        this.toastr.successToastr('Revise su Correo Electrónico', 'OPERACION EXITOSA');
       }else{
-        this.errorMessage = "Ingrese su Correo Electrónico";
+        this.toastr.warningToastr('Ingrese su Correo Electrónico', 'CUIDADO!');
       }
     }
 

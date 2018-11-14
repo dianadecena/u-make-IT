@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PizzasService } from "../services/pizzas.service";
 import { Producto } from "../models/producto";
-import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-agregar-pizza',
@@ -18,9 +18,7 @@ export class AgregarPizzaComponent implements OnInit {
     disponible:'',
   };
 
-  mensaje : string = '';
-  
-  constructor(private pizzasService: PizzasService) { }
+  constructor(private pizzasService: PizzasService,private toastr: ToastrManager) { }
 
   ngOnInit() {
   }
@@ -34,12 +32,23 @@ export class AgregarPizzaComponent implements OnInit {
       this.pizza.precio = '';
       this.pizza.imagen = '';
       this.pizza.disponible = '';
-      this.mensaje = "La operacion se ha realizado exitosamente";
-      console.log("bien");
+      this.toastr.successToastr('Se agrego el producto exitosamente', 'OPERACION EXITOSA!');
     }else{
-      this.mensaje = "Hay algun error en los campos ingresados o falta alguno por rellenar";
-      console.log("error");
+      if(this.pizza.disponible != 'si' && this.pizza.disponible != 'no'){
+        this.toastr.errorToastr('Opcion invalida en el campo disponibilidad', 'HUBO UN ERROR!');
+      }
+      if(this.pizza.precio == ""){
+        this.toastr.errorToastr('El campo precio no puede estar vacio', 'HUBO UN ERROR!');
+      }
+      if(this.pizza.imagen.length == 0){
+        this.toastr.errorToastr('El campo imagen no puede estar vacio', 'HUBO UN ERROR!');
+      }
+      if(this.pizza.nombre.length == 0){
+        this.toastr.errorToastr('El campo nombre no puede estar vacio', 'HUBO UN ERROR!');
+      }
+      if(this.pizza.descripcion.length  == 0){
+        this.toastr.errorToastr('El campo descripcion no puede estar vacio', 'HUBO UN ERROR!');
+      }
     }
   }
-
 }

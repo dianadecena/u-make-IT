@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PostresService } from "../services/postres.service";
 import { Producto } from "../models/producto";
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-agregar-postre',
@@ -17,10 +18,8 @@ export class AgregarPostreComponent implements OnInit {
     imagen:'',
     disponible:'',
   };
-
-  mensaje : string = '';
-
-  constructor(private postresService: PostresService) { }
+  
+  constructor(private postresService: PostresService,private toastr: ToastrManager) { }
 
   ngOnInit() {
   }
@@ -34,11 +33,22 @@ export class AgregarPostreComponent implements OnInit {
       this.postre.precio = '';
       this.postre.imagen = '';
       this.postre.disponible = '';
-      this.mensaje = "La operacion se ha realizado exitosamente";
-      console.log("bien");
     }else{
-      this.mensaje = "Hay algun error en los campos ingresados o falta alguno por rellenar";
-      console.log("error");
+      if(this.postre.disponible != 'si' && this.postre.disponible != 'no'){
+        this.toastr.errorToastr('Opcion invalida en el campo disponibilidad', 'HUBO UN ERROR!');
+      }
+      if(this.postre.precio == ""){
+        this.toastr.errorToastr('El campo precio no puede estar vacio', 'HUBO UN ERROR!');
+      }
+      if(this.postre.imagen.length == 0){
+        this.toastr.errorToastr('El campo imagen no puede estar vacio', 'HUBO UN ERROR!');
+      }
+      if(this.postre.nombre.length == 0){
+        this.toastr.errorToastr('El campo nombre no puede estar vacio', 'HUBO UN ERROR!');
+      }
+      if(this.postre.descripcion.length  == 0){
+        this.toastr.errorToastr('El campo descripcion no puede estar vacio', 'HUBO UN ERROR!');
+      }
     }
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BebidasService } from "../services/bebidas.service";
 import { Producto } from "../models/producto";
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-agregar-bebida',
@@ -17,9 +18,7 @@ export class AgregarBebidaComponent implements OnInit {
     disponible:'',
   };
 
-  mensaje : string = '';
-
-  constructor(private BebidasService: BebidasService) { }
+  constructor(private BebidasService: BebidasService,private toastr: ToastrManager) { }
 
   ngOnInit() {
   }
@@ -33,11 +32,23 @@ export class AgregarBebidaComponent implements OnInit {
       this.bebida.precio = '';
       this.bebida.imagen = '';
       this.bebida.disponible = '';
-      this.mensaje = "La operacion se ha realizado exitosamente";
-      console.log("bien");
+      this.toastr.successToastr('Se agrego el producto exitosamente', 'OPERACION EXITOSA!');
     }else{
-      this.mensaje = "Hay algun error en los campos ingresados o falta alguno por rellenar";
-      console.log("error");
+      if(this.bebida.disponible != 'si' && this.bebida.disponible != 'no'){
+        this.toastr.errorToastr('Opcion invalida en el campo disponibilidad', 'HUBO UN ERROR!');
+      }
+      if(this.bebida.precio == ""){
+        this.toastr.errorToastr('El campo precio no puede estar vacio', 'HUBO UN ERROR!');
+      }
+      if(this.bebida.imagen.length == 0){
+        this.toastr.errorToastr('El campo imagen no puede estar vacio', 'HUBO UN ERROR!');
+      }
+      if(this.bebida.nombre.length == 0){
+        this.toastr.errorToastr('El campo nombre no puede estar vacio', 'HUBO UN ERROR!');
+      }
+      if(this.bebida.descripcion.length  == 0){
+        this.toastr.errorToastr('El campo descripcion no puede estar vacio', 'HUBO UN ERROR!');
+      }
     }
   }
 }
