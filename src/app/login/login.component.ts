@@ -31,13 +31,22 @@ export class LoginComponent implements OnInit {
     }
 
     tryLogin(value){
-      this.authService.doLogin(value)
-      .then(res => {
-        this.router.navigate(['/home']);
-      }, err => {
-        console.log(err);
-        this.toastr.errorToastr(err.message, 'HUBO UN ERROR');
-      })
+      if(value.email != "" && value.password != ""){
+        this.authService.doLogin(value)
+        .then(res => {
+          this.router.navigate(['/home']);
+        }, err => {
+          console.log(err);
+          this.toastr.errorToastr(err.message, 'HUBO UN ERROR');
+        })
+      }else{
+        if(value.email == ""){
+          this.toastr.errorToastr('Debe ingresar un correo electronico','HUBO UN ERROR');
+        }
+        if(value.password == ""){
+          this.toastr.errorToastr('Debe ingresar una contraseña','HUBO UN ERROR');
+        }
+      }
     }
   
   tryReset(value){

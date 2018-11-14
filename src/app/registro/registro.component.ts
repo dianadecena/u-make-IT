@@ -32,18 +32,26 @@ export class RegistroComponent implements OnInit {
 
 
   tryRegister(value){
-    if(value.password == value.password2){
-      this.auten.doRegister(value)
-      .then(res => {
-        console.log(res);
-        this.auten.insertUser(value); //Guarda email y userName en la base de datos
-        this.resetForm();
-      }, err => {
-        console.log(err);
-        this.toastr.errorToastr(err.message,'HUBO UN ERROR');
-      })
+    if(value.password != "" &&  value.password2 != ""){
+      if(value.password == value.password2){
+        if(value.userName != ""){
+          this.auten.doRegister(value)
+          .then(res => {
+            console.log(res);
+            this.auten.insertUser(value); //Guarda email y userName en la base de datos
+            this.resetForm();
+          }, err => {
+            console.log(err);
+            this.toastr.errorToastr(err.message,'HUBO UN ERROR');
+          })
+        }else{
+          this.toastr.errorToastr('El campo userName no puede estar vacio','HUBO UN ERROR');
+        }
+      }else{
+        this.toastr.warningToastr('Las contraseñas ingresadas no son iguales','CUIDADO!');
+      }
     }else{
-      this.toastr.errorToastr('Las contraseñas ingresadas no son iguales','HUBO UN ERROR');
+        this.toastr.errorToastr('Los campos de las contraseñas no pueden estar vacios','HUBO UN ERROR');
     }
   }
 

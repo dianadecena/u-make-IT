@@ -59,13 +59,13 @@ doChangePassword(value){
     );  
     user.reauthenticateAndRetrieveDataWithCredential(credential).then(function() {
       console.log("se reutentico");
+      this.toastr.successToastr('OPERACION EXITOSA','Se cambio la contraseña exitosamente');
       user.updatePassword(value.password).then(function() {
-        this.toastr.successToastr('OPERACION EXITOSA','Se cambio la contraseña exitosamente');
       }).catch(function(error) {
-        console.log("NO se pudo cambiar contraseña");
+        this.toastr.errorToastr('No se pudo cambiar la contraseña','HUBO UN ERROR');
       });
     }).catch(function(error) {
-      this.toastr.errorToastr('La contraseña actual ingresada es erronea','HUBO UN ERROR');
+        this.toastr.errorToastr('La contraseña actual ingresada es erronea','HUBO UN ERROR');
     });
 }
 
@@ -75,7 +75,7 @@ doChangePassword(value){
       var email =firebase.auth().currentUser.email;
       return email;
     }else{
-        console.log("no se pudo recuperar el email del usuario");
+        this.toastr.errorToastr('No se pudo recuperar el email del usuario','HUBO UN ERROR');
     }
   }
 

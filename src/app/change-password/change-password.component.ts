@@ -33,10 +33,10 @@ export class ChangePasswordComponent implements OnInit {
   tryChangePassword(value){
     if(value.password == value.password2){
        this.auten.doChangePassword(value);
+       this.resetForm();
     }else{
       this.toastr.warningToastr('Las contraseñas ingresadas NO son iguales', 'CUIDADO!');
     }
-    this.resetForm();
   }
 
   resetForm(){//Resetea el formulario
