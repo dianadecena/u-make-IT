@@ -1,49 +1,31 @@
 <body>
-
-    <div class="cajaPrincipal">
-
-      <div class="cajaTitulo">
-          <h1 class="titulo">Registarse en uMakeIT!</h1>
-      </div>
-    
-      <div class="container">
-
-        <form [formGroup]="registerForm" id="cajaGeneral">
-
-          <div class="form-group">
-            <label>Correo Electrónico</label> <input type="email" 
-            formControlName="email" 
-            class="form-control" 
-            style="text-transform:lowercase;"
-            autocomplete="on" 
-            required>
-          </div>
-
-          <div class="form-group">
-            <label>Nombre de Usuario</label>
-            <input type="text" formControlName="userName" class="form-control"  maxlength="12" required>
-          </div>
-
-          <div class="form-group">
-            <label>Contraseña</label>
-            <input  type="password" class="form-control" formControlName="password" required>
-          </div>
-
-          <div class="form-group">
-            <label>Confirma tu Contraseña</label>
-            <input  type="password" class="form-control" formControlName="password2" required>
-          </div>
-        </form>
-      </div>
-
-      <div id="cajaRegister">
-        <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default" id="boton" type="reset">Registrarse</button>
-      </div>
-
-      <div class="row">
-          <a id="botonLogin"[routerLink]="['/login']">Ya tengo una cuenta</a>
-      </div>
-
+     <div class="cajaTitulo">
+        <h1 class="titulo">Registarse en uMakeIT!</h1>
      </div>
-
+     <form [formGroup]="registerForm" id="forma">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Correo Electrónico</label>
+          <input type="email" class="form-control"  formControlName="email"   style="text-transform:lowercase" placeholder="ejemplo@correo.com" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Nombre de Usuario</label>
+          <input type="text" class="form-control" formControlName="userName" placeholder="Ingrese su nombre de usuario" maxlength="12" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Contraseña</label>
+        <input type="password" class="form-control" formControlName="password" placeholder="Ingrese su contraseña" minlength="6" required>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress2">Confirme su contraseña</label>
+        <input type="password" class="form-control" formControlName="password2" placeholder="Ingrese su contraseña" minlength="6" required>
+      </div>
+      <div id="cajaBotones">
+          <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-primary">Registrarse en uMakeIT!</button>
+      </div>
+      <div id="cajaBotones">
+          <button type="submit" [routerLink]="['/login']" class="btn btn-primary">Entrar en uMakeIT!</button>
+      </div>
+    </form>
   </body>

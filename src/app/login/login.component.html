@@ -1,29 +1,20 @@
 <body>
-<h1 class="header">Inicia sesión en uMakeIT!</h1>
-
-     <div class="container">
-          <form [formGroup]="loginForm" id="cajaGeneral">
-            <div class="form-group">
-              <label>Correo Electrónico</label>
-              <input type="email" formControlName="email" class="form-control" autocomplete="on" required>
-            </div>
-            <div class="form-group">
-              <label>Contraseña</label>
-              <input type="password" class="form-control" formControlName="password" required>
-            </div>
-          </form>
-      </div>
-
-      <div class="bLogin">
-        <button type="submit" (click)="tryLogin(loginForm.value)" class="btn btn-default" id="boton">Login</button>
-      </div>
-
-      <div id="cajaIrRegister">
-          <a id="botonregister" [routerLink]="['/register']">¿No tienes cuenta aún?</a>
-      </div>
-  
-      <div id="cajaIrRegister">
-        <button id ="BnR" type="submit" (click)="tryReset(loginForm.value)">No recuerdo mi contraseña</button>
-      </div>
-
+  <h1 class="header">Inicia sesión en uMakeIT!</h1>
+    <form [formGroup]="loginForm">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Correo Electrónico</label>
+          <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp" placeholder="Ingrese su correo" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Contraseña</label>
+          <input type="password" class="form-control"  formControlName="password" placeholder="Ingrese su contraseña" required>
+        </div>
+        <div id="entrar">
+            <button type="submit" (click)="tryLogin(loginForm.value)" class="btn btn-primary">Entrar</button>
+            <button type="submit" [routerLink]="['/register']" class="btn btn-primary">¿No tienes cuenta aún?</button>
+        </div>
+        <div id ="entrar">
+            <button type="submit" (click)="tryReset(loginForm.value)" class="btn btn-primary">No recuerdo mi contraseña</button>
+        </div>
+      </form>
 </body>

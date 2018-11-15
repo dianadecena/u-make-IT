@@ -3,19 +3,33 @@ body{
     margin-top: 10%;
 }
 
+.cajaTitulo{
+    margin-bottom: 30px;
+}
+
+
 .titulo{
     text-align: center;
     color: #6666ff;
-    font-size: 250%;
+    font-size: 350%;
     margin-bottom: 5px;
     text-shadow: 2px 2px #3333ff;
 }
 
-.cajaTitulo{
-    margin-bottom: 25px;
+
+#botonLogin{
+    color: white;
+    font-style: bold;
+    padding: 7px;
 }
 
-.form-group{
+
+#forma{
+    width: 35%;
+    margin: auto;
+}
+
+label{
     color: white;
     font-size: 1.2rem;
 }
@@ -24,50 +38,6 @@ textarea:focus, input:focus, input[type]:focus {
     border-color:  #3333ff;
     box-shadow: 1px 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px  #3333ff;
     outline: 0 none;
-}
-.container{
-    width: 60%;
-}
-
-#cajaGeneral{
-    margin: auto;
-    width: 50%;
-}
-
-#irLogin{
-    color: white;
-    font-size: 1.3rem;
-    margin-top: 5px;
-}
-
-.row{
-    width: 25%;
-    margin-left:52%;
-}
-
-#boton{
-    background: #3333ff;
-    box-shadow: 3px 2px #6666ff;
-    color: white;
-    font-style: bold;
-    font-size: 1.15rem;
-}
-
-#botonLogin{
-    color: white;
-    font-style: bold;
-    padding: 7px;
-}
-
-a{
-    padding: 0.3rem;
-    border-radius: 3px;
-    font-size: 1.3rem;
-}
-
-#cajaRegister{
-    position: absolute;
-    margin-left: 35%;;
 }
 
 input:invalid {
@@ -80,6 +50,15 @@ input:valid {
     box-shadow: 1px 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px  #00ff00;
 }
 
-@media screen and (max-width: 1150px) {
-    
-  }
+button{
+    margin-bottom: 15px;
+    background:  #3333ff;
+    border: 2px solid #6666ff;
+    width: 100%;
+}
+
+#cajaBotones{
+    width: 100%;
+    margin: auto;
+}
+

@@ -32,10 +32,10 @@ export class RegistroComponent implements OnInit {
 
 
   tryRegister(value){
-    if(value.password != "" &&  value.password2 != ""){
-      if(value.password == value.password2){
-        if(value.userName != ""){
-          this.auten.doRegister(value)
+
+    if(value.password != "" &&  value.password2 != "" && (value.password == value.password2) &&
+    value.userName != "" && value.email!=""){
+           this.auten.doRegister(value)
           .then(res => {
             console.log(res);
             this.auten.insertUser(value); //Guarda email y userName en la base de datos
@@ -44,14 +44,19 @@ export class RegistroComponent implements OnInit {
             console.log(err);
             this.toastr.errorToastr(err.message,'HUBO UN ERROR');
           })
-        }else{
-          this.toastr.errorToastr('El campo userName no puede estar vacio','HUBO UN ERROR');
-        }
-      }else{
+    }else{
+      if(value.password == "" ||  value.password2 == ""){
+        this.toastr.errorToastr('Los campos de las contraseñas no pueden estar vacios','HUBO UN ERROR');
+      }
+      if(value.password != value.password2){
         this.toastr.warningToastr('Las contraseñas ingresadas no son iguales','CUIDADO!');
       }
-    }else{
-        this.toastr.errorToastr('Los campos de las contraseñas no pueden estar vacios','HUBO UN ERROR');
+      if(value.userName == ""){
+        this.toastr.errorToastr('El campo userName no puede estar vacio','HUBO UN ERROR');
+      }
+      if(value.email == ""){
+        this.toastr.errorToastr('El campo email no puede estar vacio','HUBO UN ERROR');
+      }
     }
   }
 
