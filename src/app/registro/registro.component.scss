@@ -31,7 +31,7 @@ body{
 
 label{
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 textarea:focus, input:focus, input[type]:focus {
@@ -53,8 +53,10 @@ input:valid {
 button{
     margin-bottom: 15px;
     background:  #3333ff;
-    border: 2px solid #6666ff;
+    border: none;
     width: 100%;
+    padding: 8px;
+    font-size: 1.3em;
 }
 
 #cajaBotones{

@@ -3,7 +3,8 @@
     <form [formGroup]="loginForm">
         <div class="form-group">
           <label for="exampleInputEmail1">Correo Electrónico</label>
-          <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp" placeholder="Ingrese su correo" required>
+          <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp" 
+          placeholder="Ingrese su correo" autocomplete="on" required>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Contraseña</label>
@@ -11,10 +12,10 @@
         </div>
         <div id="entrar">
             <button type="submit" (click)="tryLogin(loginForm.value)" class="btn btn-primary">Entrar</button>
-            <button type="submit" [routerLink]="['/register']" class="btn btn-primary">¿No tienes cuenta aún?</button>
+            <button type="submit" [routerLink]="['/register']" class="btn btn-primary">¿Primera vez en uMakeIT!?</button>
         </div>
         <div id ="entrar">
-            <button type="submit" (click)="tryReset(loginForm.value)" class="btn btn-primary">No recuerdo mi contraseña</button>
+            <button type="submit" (click)="tryReset(loginForm.value)" class="btn btn-primary">¿Olvidaste tu contraseña?</button>
         </div>
       </form>
 </body>

@@ -29,7 +29,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { BarraProductosComponent } from './barra-productos/barra-productos.component';
 import { PizzasService } from './services/pizzas.service';
 import { BebidasService } from './services/bebidas.service';

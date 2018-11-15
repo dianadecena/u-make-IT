@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { User } from '../models/user';
 import {ToastrManager} from 'ng6-toastr-notifications';

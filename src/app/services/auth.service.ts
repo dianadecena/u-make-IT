@@ -3,11 +3,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import { Router} from '@angular/router';
-
 import {ToastrManager} from 'ng6-toastr-notifications';
 
 //Importando una clase
-import {User} from './models/user';
+import {User} from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +49,16 @@ export class AuthService {
       console.log("Ocurrio un error");
     });
   }
+
+showmessage(opcion){
+    if(opcion==1){
+      this.toastr.successToastr('Se cambio correctamente la contraseña', 'OPERACION EXITOSA');
+    }else if(opcion==2){
+      this.toastr.errorToastr('No se pudo autenticar','HUBO UN ERROR');
+    }else if(opcion==3){
+      this.toastr.errorToastr('La contraseña actual ingresada no coincide con la registrada anteriormente','HUBO UN ERROR');
+    }
+}
   
 doChangePassword(value){
     var user = firebase.auth().currentUser;
@@ -58,16 +67,16 @@ doChangePassword(value){
         value.passwordActual
     );  
     user.reauthenticateAndRetrieveDataWithCredential(credential).then(function() {
-      console.log("se reutentico");
-      this.toastr.successToastr('OPERACION EXITOSA','Se cambio la contraseña exitosamente');
       user.updatePassword(value.password).then(function() {
       }).catch(function(error) {
-        this.toastr.errorToastr('No se pudo cambiar la contraseña','HUBO UN ERROR');
+       
       });
     }).catch(function(error) {
-        this.toastr.errorToastr('La contraseña actual ingresada es erronea','HUBO UN ERROR');
+      
     });
 }
+
+
 
   usuarioActual(){
     var user = firebase.auth().currentUser;
@@ -75,16 +84,15 @@ doChangePassword(value){
       var email =firebase.auth().currentUser.email;
       return email;
     }else{
-        this.toastr.errorToastr('No se pudo recuperar el email del usuario','HUBO UN ERROR');
+        this.toastr.errorToastr('No se pudo recuperar el email del usuario, reinicie la pagina','HUBO UN ERROR');
     }
   }
 
-  getUser(){
+  getUser(){ //Obtener userName
       return this.userList = this.fire.list('users');
   }
 
-  //Guardando el nombre de usuario en DataBase
-  insertUser(user: User){
+  insertUser(user: User){ //Guardando el nombre de usuario en DataBase
       this.userList.push({
         userName: user.userName,
         email: user.email

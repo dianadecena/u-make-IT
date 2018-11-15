@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { FormGroup, FormBuilder} from '@angular/forms';
 import {ToastrManager} from 'ng6-toastr-notifications';
 
@@ -13,6 +13,7 @@ export class ChangePasswordComponent implements OnInit {
   changeForm: FormGroup;
 
   public  admin = this.auten.isAdmin();
+  public  resul;
 
   constructor(private auten: AuthService, private fb: FormBuilder,private toastr: ToastrManager ) { 
     this.createForm();
@@ -32,7 +33,7 @@ export class ChangePasswordComponent implements OnInit {
 
   tryChangePassword(value){
     if(value.password == value.password2){
-       this.auten.doChangePassword(value);
+       this.resul=this.auten.doChangePassword(value);
        this.resetForm();
     }else{
       this.toastr.warningToastr('Las contraseñas ingresadas NO son iguales', 'CUIDADO!');
