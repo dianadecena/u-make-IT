@@ -34,6 +34,7 @@ import { BarraProductosComponent } from './barra-productos/barra-productos.compo
 import { PizzasService } from './services/pizzas.service';
 import { BebidasService } from './services/bebidas.service';
 import { PostresService } from './services/postres.service';
+import { ExtrasService } from './services/extras.service';
 import { AgregarBebidaComponent } from './agregar-bebida/agregar-bebida.component';
 import { AgregarPizzaComponent } from './agregar-pizza/agregar-pizza.component';
 import { AgregarPostreComponent } from './agregar-postre/agregar-postre.component';
@@ -51,7 +52,7 @@ const appRoutes:Routes = [
     component: PizzasComponent
   },
   {
-    path: 'orden',
+    path: 'carrito',
     component: OrdenComponent
   },
     {
@@ -138,7 +139,8 @@ const appRoutes:Routes = [
     AngularFirestore,
     PizzasService,
     BebidasService,
-    PostresService
+    PostresService,
+    ExtrasService
   ],
 
   bootstrap: [AppComponent]

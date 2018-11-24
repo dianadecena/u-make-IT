@@ -3,6 +3,7 @@ import { PizzasService } from '../services/pizzas.service';
 import { Producto } from '../models/producto';
 import { AuthService } from '../services/auth.service';
 import { Item } from '../models/item';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-pizzas',
@@ -24,7 +25,7 @@ export class PizzasComponent implements OnInit {
   editing: boolean = false;
   editingPizza: Producto;
 
-  constructor(private pizzasService: PizzasService, private auten: AuthService) {}
+  constructor(private pizzasService: PizzasService, private auten: AuthService, private toastr: ToastrManager) {}
 
   public admin = this.auten.isAdmin();
 
@@ -54,7 +55,8 @@ export class PizzasComponent implements OnInit {
   addToCart(n: string, p: number) {
      var item: Item = {
       nombre: n,
-      precio: p
+      precio: p,
+      cantidad: 1
      }
      if (localStorage.getItem('cart') == null) {
           let cart: any = [];
@@ -75,11 +77,12 @@ export class PizzasComponent implements OnInit {
             localStorage.setItem('cart', JSON.stringify(cart));
           } else {
             let item: Item = JSON.parse(cart[index]);
+            item.cantidad += 1;
             cart[index] = JSON.stringify(item);
             localStorage.setItem("cart", JSON.stringify(cart));
           }
   }
-  alert("Has agregado una pizza al carrito");
+  this.toastr.successToastr('Has agregado una pizza al carrito');
 
 }
 }
