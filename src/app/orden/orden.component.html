@@ -1,15 +1,32 @@
+<app-barra-superior></app-barra-superior>
 <div class="container-fluid">
-    <app-barra-superior></app-barra-superior>
             <div class="row">
-                <div class="col-md-12 col-xs-12">
+                <div class="col-md-12 col-xs-12 col-lg-6">      
                     <div class="container-orden">
                         <div class="orden" *ngFor="let item of items">
                             <div class="nombre-producto"><span>{{item.nombre}}</span></div>
-                            <div class="precio-producto"><span>{{item.precio}}</span></div>
-                            <div class="eliminar-producto" (click)="eliminar(item.nombre)"><i class="fa fa-trash fa-2x"></i></div>
+                            <div class="precio-producto"><span>{{item.precio}}$</span></div>
+                            <div class="cant-producto"><span>{{item.cantidad}}</span></div>
+                            <div class="eliminar-producto" (click)="eliminar(item.nombre, item.cantidad)"><i class="fa fa-trash fa-2x"></i></div>
                         </div>
                     </div>
-                    <div class="container-total"><div class="total-texto">Total a pagar:</div><div class="total-monto">{{total}}$</div>
+                    <div class="container-extras">
+                        <div class="orden" *ngFor="let extra of extra_items">
+                            <div class="nombre-producto"><span>{{extra.nombre}}</span></div>
+                            <div class="precio-producto"><span>{{extra.precio}}$</span></div>
+                            <div class="cant-producto"><span>{{extra.cantidad}}</span></div>
+                            <div class="eliminar-producto" (click)="eliminar(item.nombre, item.cantidad)"><i class="fa fa-trash fa-2x"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-lg-6">
+                    <div class="container-total"><div class="total-texto">
+                    <span>Subtotal: </span></div>
+                    <div class="total-texto">
+                    <span>Impuestos: </span></div>
+                    <div class="total-texto">
+                    <span>Extras: {{total_extras}}$</span></div>
+                    <div class="total-texto">Total a pagar:</div><div class="total-monto">{{total}}$</div>
                         <div class="terminar-pedido"><span>Finalizar pedido</span></div>
                     </div>
                 </div>

@@ -33,22 +33,22 @@ export class AgregarPostreComponent implements OnInit {
       this.postre.precio = '';
       this.postre.imagen = '';
       this.postre.disponible = '';
-      this.toastr.successToastr('Se agrego el producto exitosamente', 'OPERACION EXITOSA!');
+      this.toastr.successToastr('Se agrego el postre exitosamente');
     }else{
       if(this.postre.disponible != 'si' && this.postre.disponible != 'no'){
-        this.toastr.errorToastr('Opcion invalida en el campo disponibilidad', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('Opcion invalida en el campo disponibilidad');
       }
       if(this.postre.precio == ""){
-        this.toastr.errorToastr('El campo precio no puede estar vacio', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('El campo precio no puede estar vacio');
       }
       if(this.postre.imagen.length == 0){
-        this.toastr.errorToastr('El campo imagen no puede estar vacio', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('El campo imagen no puede estar vacio');
       }
       if(this.postre.nombre.length == 0){
-        this.toastr.errorToastr('El campo nombre no puede estar vacio', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('El campo nombre no puede estar vacio');
       }
       if(this.postre.descripcion.length  == 0){
-        this.toastr.errorToastr('El campo descripcion no puede estar vacio', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('El campo descripcion no puede estar vacio');
       }
     }
   }

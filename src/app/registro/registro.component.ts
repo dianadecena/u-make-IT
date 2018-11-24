@@ -42,20 +42,20 @@ export class RegistroComponent implements OnInit {
             this.resetForm();
           }, err => {
             console.log(err);
-            this.toastr.errorToastr(err.message,'HUBO UN ERROR');
+            this.toastr.errorToastr(err.message);
           })
     }else{
       if(value.password == "" ||  value.password2 == ""){
-        this.toastr.errorToastr('Los campos de las contraseñas no pueden estar vacios','HUBO UN ERROR');
+        this.toastr.errorToastr('El campo  contraseña no puede estar vacio');
       }
       if(value.password != value.password2){
-        this.toastr.warningToastr('Las contraseñas ingresadas no son iguales','CUIDADO!');
+        this.toastr.warningToastr('Las contraseñas ingresadas no son iguales');
       }
       if(value.userName == ""){
-        this.toastr.errorToastr('El campo userName no puede estar vacio','HUBO UN ERROR');
+        this.toastr.errorToastr('El campo nombre de usuario no puede estar vacio');
       }
       if(value.email == ""){
-        this.toastr.errorToastr('El campo email no puede estar vacio','HUBO UN ERROR');
+        this.toastr.errorToastr('El campo email no puede estar vacio');
       }
     }
   }

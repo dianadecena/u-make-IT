@@ -22,42 +22,37 @@
                     </div>
                 </div>
             </div>
-
+                
             <div class="row level-3">
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 sub-level-2 level-3" *ngFor="let postre of postres">
-                        <div class="container-product">
-                            <div class="flex-container-product">
-                                <img class="imagen-producto" src="{{postre.imagen}}" />
+                <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 sub-level-2 level-3" *ngFor="let postre of postres">
+                    <div class="container-product">
+                        <div class="flex-container-product"><img class="imagen-producto" src="{{postre.imagen}}" /></div>
+                        <div class="flex-container-product-2">
+                            <div class="box info">
+                                <div class="nombre-producto">{{postre.nombre}}</div>
+                                <div class="precio">{{postre.precio}}$</div>
                             </div>
-                            <div class="flex-container-product-2">
-                                <div class="box info">
-                                    <div class="nombre-producto">{{postre.nombre}}</div>
-                                    <div class="descripcion">{{postre.descripcion}}</div>
-                                    <div class="precio">{{postre.precio}}$</div>
-                                </div>
-                                <div class="flex-container-buttons">
-                                    <div class="box agregar" *ngIf = "!admin" (click)="addToCart(postre.nombre, postre.precio)"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
-                                    <div class="box agregar" *ngIf = "admin" (click)="deletePostre($event, postre)"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
-                                    <a *ngIf = "admin" (click)="editPostre($event, postre)"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
-                                    <a *ngIf = "!admin" [routerLink]="['/personalizar']"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
-                                    </div>
-                                </div>
-                             <div *ngIf="editing && editingPostre.id == postre.id">
-                                        <form (ngSubmit)="updatePostre(postre)">
-                                            <input type="text" name="nombre" [(ngModel)]="editingPostre.nombre">
-                                            <input type="text" name="descripcion" [(ngModel)]="editingPostre.descripcion">
-                                            <input type="text" name="precio" [(ngModel)]="editingPostre.precio">
-                                            <input type="text" name="imagen" [(ngModel)]="editingPostre.imagen">
-                                            <input type="text" name="disponible" [(ngModel)]="editingPostre.disponible">
-                                            <button type="submit">
-                                                Actualizar
-                                            </button>
-                                        </form>
+                            <div class="flex-container-buttons">
+                                <div class="box agregar" *ngIf = "!admin" (click)="addToCart(postre.nombre, postre.precio)"><div class="icon"><i class="fas fa-cart-plus fa-2x"></i></div></div>
+                                <div class="box agregar" *ngIf = "admin" (click)="deletePostre($event, postre)"><div class="icon"><i class="fa fa-plus fa-2x"></i></div></div>
+                                <a *ngIf = "admin" (click)="editPostre($event, postre)"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
+                                <a *ngIf = "!admin" [routerLink]="['/personalizar']"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
                             </div>
-                            <div class="container-disponibilidad" *ngIf="postre.disponible=='si'">Disponible</div>
-                            <div class="container-no-disponibilidad" *ngIf="postre.disponible=='no'">No disponible</div>
                         </div>
+                        <div *ngIf="editing && editingPostre.id == postre.id">
+                            <form (ngSubmit)="updatePostre(postre)">
+                                <input type="text" name="nombre" [(ngModel)]="editingPostre.nombre">
+                                <input type="text" name="descripcion" [(ngModel)]="editingPostre.descripcion">
+                                <input type="text" name="precio" [(ngModel)]="editingPostre.precio">
+                                <input type="text" name="imagen" [(ngModel)]="editingPostre.imagen">
+                                <input type="text" name="disponible" [(ngModel)]="editingPostre.disponible">
+                                <button type="submit">Actualizar</button>
+                            </form>
+                         </div>
+                        <div class="container-disponibilidad" *ngIf="postre.disponible=='si'">Disponible</div>
+                        <div class="container-no-disponibilidad" *ngIf="postre.disponible=='no'">No disponible</div>
                     </div>
                 </div>
+            </div> 
     </div>
     

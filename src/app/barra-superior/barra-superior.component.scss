@@ -5,6 +5,7 @@
 	top:0px;
     position:fixed;
     width: 100%;
+    z-index: 1;
  }
 
  p{
@@ -19,7 +20,7 @@
     margin-top: 15px;
     font-size: 1.5em;
     position:fixed;
-    z-index: 1;
+    z-index: 2;
 }
 
 .logo img{                                  /* Logo en la navbar */
@@ -28,9 +29,10 @@
     position:fixed;
     margin-top: 0.7%;
     margin-left: 2%;
+    margin-bottom: 5px;
     width:45px; 
     height:45px;
-    z-index: 1;
+    z-index: 2;
 }
 
 nav {                                       /* ESTILOS GENERALES DE LA NAV */
@@ -90,7 +92,7 @@ nav li:hover > ul{                           /* Submenu */
 /*-----------RESPONSIVE--------------*/
 
 
-@media screen and (max-width: 930px){
+@media screen and (max-width: 940px){
     .nombreEmpresa{
         display: none;
     }
@@ -102,7 +104,7 @@ nav li:hover > ul{                           /* Submenu */
     }
 }
 
-@media screen and (max-width: 585px){
+@media screen and (max-width: 610px){
 
     nav{
         font-size: 0.90em;
@@ -121,7 +123,7 @@ nav li:hover > ul{                           /* Submenu */
     }
 
     nav {                                       /* ESTILOS GENERALES DE LA NAV */
-        height: 165px;
+        height: 155px;
     }
 
     .nombreEmpresa{

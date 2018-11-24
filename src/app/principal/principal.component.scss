@@ -6,28 +6,44 @@ body {
 .promocion{
   text-align: center;
   margin-top: 90px;
-  background: #6a84fb;
+  background: transparent;
   color: white;
-  padding: 8px;
+  margin-right: 100px;
+  margin-left: 100px;
   font-family: Quicksand;
   border-radius: 10px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: white;
+  box-shadow: 0px 0px 30px #0708B8;
 }
 
 #compraYA{
-  font-size: 30px;
+  font-size: 6vw;
+  text-shadow: 0px 0px 36px #F41D0A;
 }
 
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: 1.5px;
 }
 
+#mejoresPlatos{
+  font-size: 1.8vw;
+}
+
 .promocion2{
+  text-align: center;
   margin-top: 25px;
   margin-bottom: 25px;
   color: white;
-  width: 60%;
+  width: 52%;
   margin-right: auto;
   margin-left: auto;
+  background: #4636dd;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px #0708B8;
+  font-family: Quicksand;
+  padding: 4px;
 }
 
 /*-------------OPCIONES-----------------------*/
@@ -57,9 +73,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /*-----------------Estilos de info-----------------*/
 .info__columna {
-  background: #6a84fb;
+  background: transparent;
   color: #fff;
   text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #fff;
   border-radius: 5px;
   width: 350px;
   height: 300px;
@@ -79,8 +98,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .contenedor{
-  width: 98%;
-  margin: 30px auto 30px auto;
+  width: 100%;
+  margin-left: 40px;
 }
 
 .info__titulo{
@@ -95,6 +114,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .info__columna img{
   max-width: 100%;
+}
+
+.tortaGelatina{
+  background: url(./imagenes/tortaN.jpg) no-repeat;
+  background-size: cover;
+}
+
+.ponque{
+  background: url(./imagenes/postreN.jpg) no-repeat;
+  background-size: cover;
 }
 
 /*------------------Estilos responsive------------------*/

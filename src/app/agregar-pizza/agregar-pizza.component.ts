@@ -33,22 +33,22 @@ export class AgregarPizzaComponent implements OnInit {
       this.pizza.precio = '';
       this.pizza.imagen = '';
       this.pizza.disponible = '';
-      this.toastr.successToastr('Se agrego el producto exitosamente', 'OPERACION EXITOSA!');
+      this.toastr.successToastr('Se agrego la pizza exitosamente');
     }else{
       if(this.pizza.disponible != 'si' && this.pizza.disponible != 'no'){
-        this.toastr.errorToastr('Opcion invalida en el campo disponibilidad', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('Opcion invalida en el campo disponibilidad');
       }
       if(this.pizza.precio == ""){
-        this.toastr.errorToastr('El campo precio no puede estar vacio', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('El campo precio no puede estar vacio');
       }
       if(this.pizza.imagen.length == 0){
-        this.toastr.errorToastr('El campo imagen no puede estar vacio', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('El campo imagen no puede estar vacio');
       }
       if(this.pizza.nombre.length == 0){
-        this.toastr.errorToastr('El campo nombre no puede estar vacio', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('El campo nombre no puede estar vacio');
       }
       if(this.pizza.descripcion.length  == 0){
-        this.toastr.errorToastr('El campo descripcion no puede estar vacio', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('El campo descripcion no puede estar vacio');
       }
     }
   }

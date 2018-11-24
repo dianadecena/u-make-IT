@@ -48,14 +48,15 @@ export class BebidasComponent implements OnInit {
   deleteBebida(event, bebida) {
    if(confirm("¿Estás seguro que deseas borrar este producto?")) {
      this.bebidasService.deleteBebida(bebida);
-     this.toastr.successToastr('Se elimino correctamente el producto', 'OPERACION EXITOSA!');
+     this.toastr.successToastr('Se elimino la bebida correctamente');
    } 
   }
 
    addToCart(n: string, p: number) {
      var item: Item = {
       nombre: n,
-      precio: p
+      precio: p,
+      cantidad: 1
      }
      if (localStorage.getItem('cart') == null) {
           let cart: any = [];
@@ -76,11 +77,12 @@ export class BebidasComponent implements OnInit {
             localStorage.setItem('cart', JSON.stringify(cart));
           } else {
             let item: Item = JSON.parse(cart[index]);
+            item.cantidad += 1;
             cart[index] = JSON.stringify(item);
             localStorage.setItem("cart", JSON.stringify(cart));
           }
   }
-  this.toastr.successToastr('Se agrego el producto al carrito de compras', 'OPERACION EXITOSA!');
+  this.toastr.successToastr('Has agregado una bebida al carrito');
 }
 
 }

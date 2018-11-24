@@ -49,14 +49,15 @@ export class PostresComponent implements OnInit {
   deletePostre(event, postre) {
    if(confirm("¿Estás seguro que deseas borrar este producto?")) {
      this.postresService.deletePostre(postre);
-     this.toastr.successToastr('Se elimino correctamente el producto', 'OPERACION EXITOSA!');
+     this.toastr.successToastr('Se elimino correctamente el postre');
    } 
   }
 
   addToCart(n: string, p: number) {
-     var item: Item = {
+      var item: Item = {
       nombre: n,
-      precio: p
+      precio: p,
+      cantidad: 1
      }
      if (localStorage.getItem('cart') == null) {
           let cart: any = [];
@@ -81,6 +82,6 @@ export class PostresComponent implements OnInit {
             localStorage.setItem("cart", JSON.stringify(cart));
           }
   }
-    this.toastr.successToastr('Se agrego el producto al carrito de compras', 'OPERACION EXITOSA!');
+    this.toastr.successToastr('Se agrego el postre al carrito de compras');
   }
 }

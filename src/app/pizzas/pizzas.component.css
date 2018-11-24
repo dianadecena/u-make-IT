@@ -1,14 +1,3 @@
-#disponible:checked ~ #productos .nDisponible{
-	display: none;
-}
-
-#nDisponible:checked ~ #productos .disponible{
-    display: none;
-}
-
-label{
-    color:white;
-}
 
 .texto-pizza {
     font-family: Quicksand;

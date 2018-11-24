@@ -37,14 +37,14 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home']);
         }, err => {
           console.log(err);
-          this.toastr.errorToastr(err.message, 'HUBO UN ERROR');
+          this.toastr.errorToastr(err.message);
         })
       }else{
         if(value.email == ""){
-          this.toastr.errorToastr('Debe ingresar un correo electronico','HUBO UN ERROR');
+          this.toastr.errorToastr('Debe ingresar un correo electronico para ingresar');
         }
         if(value.password == ""){
-          this.toastr.errorToastr('Debe ingresar una contraseña','HUBO UN ERROR');
+          this.toastr.errorToastr('Debe ingresar una contraseña para ingresar');
         }
       }
     }
@@ -52,9 +52,9 @@ export class LoginComponent implements OnInit {
   tryReset(value){
       if(value.email != ""){
         this.authService.tryResetPassword(value);
-        this.toastr.successToastr('Revise su Correo Electrónico', 'OPERACION EXITOSA');
+        this.toastr.successToastr('Revise su Correo Electrónico');
       }else{
-        this.toastr.warningToastr('Ingrese su Correo Electrónico', 'CUIDADO!');
+        this.toastr.warningToastr('Ingrese su Correo Electrónico');
       }
     }
 

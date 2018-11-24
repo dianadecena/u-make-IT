@@ -32,22 +32,22 @@ export class AgregarBebidaComponent implements OnInit {
       this.bebida.precio = '';
       this.bebida.imagen = '';
       this.bebida.disponible = '';
-      this.toastr.successToastr('Se agrego el producto exitosamente', 'OPERACION EXITOSA!');
+      this.toastr.successToastr('Se agrego la bebida exitosamente');
     }else{
       if(this.bebida.disponible != 'si' && this.bebida.disponible != 'no'){
-        this.toastr.errorToastr('Opcion invalida en el campo disponibilidad', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('Opcion invalida en el campo disponibilidad');
       }
       if(this.bebida.precio == ""){
-        this.toastr.errorToastr('El campo precio no puede estar vacio', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('El campo precio no puede estar vacio');
       }
       if(this.bebida.imagen.length == 0){
-        this.toastr.errorToastr('El campo imagen no puede estar vacio', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('El campo imagen no puede estar vacio');
       }
       if(this.bebida.nombre.length == 0){
-        this.toastr.errorToastr('El campo nombre no puede estar vacio', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('El campo nombre no puede estar vacio');
       }
       if(this.bebida.descripcion.length  == 0){
-        this.toastr.errorToastr('El campo descripcion no puede estar vacio', 'HUBO UN ERROR!');
+        this.toastr.errorToastr('El campo descripcion no puede estar vacio');
       }
     }
   }

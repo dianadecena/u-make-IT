@@ -1,3 +1,7 @@
+.row{
+    z-index: 0;
+}
+
 .container-orden {
     display: flex;
     flex-direction: column;
@@ -6,8 +10,22 @@
     margin-left: 50px;
     width: 480px;
     height: auto;
-    box-shadow: 2px 2px 6px rgb(164, 165, 162);
-    background: #fff;
+    box-shadow: 0px 0px 8px rgb(164, 165, 162);
+    border-radius: 4px;
+    background: rgb(17, 17, 17);
+}
+
+.container-extras {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    margin-top: 40px;
+    margin-left: 50px;
+    width: 480px;
+    height: auto;
+    box-shadow: 0px 0px 8px rgb(164, 165, 162);
+    border-radius: 4px;
+    background: rgb(17, 17, 17);
 }
 
 .orden {
@@ -16,9 +34,8 @@
     border-radius: 8px;
     border: solid;
     border-width: 1.5px;
-    border-color: rgb(60, 248, 154);
-    box-shadow: 0px 0px 6px rgb(60, 248, 154);
-    margin: 6px 20px 6px 20px;
+    border-color: rgb(132, 253, 142);
+    margin: 10px 20px 2px 20px;
 }
 
 .orden > div {
@@ -28,7 +45,7 @@
     font-weight: 640;
     margin: 4px;
     text-align: center;
-    color: #000000;
+    color: #fff;
 }
 
 .eliminar-producto {
@@ -37,51 +54,50 @@
     border: solid;
     border-width: 1.5px;
     border-color: rgb(253, 50, 50);
-    box-shadow: 0px 0px 4px rgb(253, 50, 50);
 }
 
 .container-total {
     border-radius: 12px;
-    background: rgb(17, 17, 17);
+    background: transparent;
     width: 250px;
-    height: 220px;
+    height: auto;
+    margin-right: 40px;
     margin-top: 100px;
-    margin-left: 100px;
-    float: left;
-    text-align: center;
+    float: right;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(132, 253, 142);
+    box-shadow: 0px 0px 8px rgb(5, 255, 25);
 }
 
 .total-texto {
     margin-top: 20px;
+    margin-left: 10px;
     font-family: Quicksand;
-    text-shadow: 0 0 20px #fff;
     color: #fff;
     font-weight: 650;
-    font-size: 26px;
+    font-size: 20px;
 }
 
 .total-monto {
     font-family: Quicksand;
-    text-shadow: 0 0 20px rgb(4, 236, 120);
-    color: rgb(60, 248, 154);
+    color: rgb(132, 253, 142);
+    text-shadow: 0px 0px 8px rgb(5, 255, 25);
     font-weight: 650;
     font-size: 46px;
+    text-align: center;
 }
 
 .terminar-pedido {
     font-weight: 640;
     border-radius: 8px;
-    border: solid;
-    border-width: 1.5px;
-    border-color: rgb(60, 248, 154);
-    color: #fff;
-    background: transparent;
-    font-size: 20px;
+    color: #000;
+    background: #fff;
+    font-size: 18px;
     text-align: center;
     width: 180px;
-    height: 40px;
-    margin-top: 35px;
+    height: 30px;
+    margin-top: 25px;
     margin-left: 35px;
+    margin-bottom: 10px;
 }
-
-
