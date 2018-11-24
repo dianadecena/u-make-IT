@@ -8,17 +8,26 @@ body {
   margin-top: 90px;
   background: #6a84fb;
   color: white;
-  padding: 1%;
+  padding: 8px;
   font-family: Quicksand;
   border-radius: 10px;
 }
 
 #compraYA{
-  font-size: 2vw;
+  font-size: 30px;
 }
 
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: 1.5px;
+}
+
+.promocion2{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  color: white;
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 /*-------------OPCIONES-----------------------*/
@@ -27,8 +36,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 2%;
   float: left;
   margin-left: 10%;
-  width: 14%;
-  height: 14%;
+  width: 230px;
+  height: 230px;
   margin-right: 2%;
 }
 
@@ -41,12 +50,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .grid img{
-  margin:11%;
+  margin:30px;
   width: 80%;
   height: 80%;
 }
-
-
 
 /*-----------------Estilos de info-----------------*/
 .info__columna {
@@ -57,9 +64,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 350px;
   height: 300px;
   display: inline-block;
-  padding: 0.4%;
-  margin-right: 6%;
-  margin-bottom: 4%;
+  padding: 5px;
+  margin-right: 30px;
+  margin-bottom: 25px;
 }
 
 .info__img{
@@ -72,16 +79,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .contenedor{
-  margin: 1% auto auto 12%;
+  width: 98%;
+  margin: 30px auto 30px auto;
 }
 
 .info__titulo{
-  margin-top: 2%;
+  margin-top: 5px;
   font-size: 1.5vw;
 }
 
 .info__txt{
-   margin-top: 2%;
+   margin-top: 5px;
    font-size: 1.2vw;
 }
 
@@ -90,20 +98,69 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*------------------Estilos responsive------------------*/
-@media screen and (max-width: 585px){
-  .promocion{
-    margin-top: 180px;
+
+@media screen and (max-width: 1400px){
+	.grid{
+    width:  207px;
+    height: 207px;
   }
 }
-@media screen and (max-width: 950px){
+
+@media screen and (max-width: 1300px){
+	.grid{
+    width:  197px;
+    height: 197px;
+  }
+}
+
+@media screen and (max-width: 1200px){
   .grid{
-    display: none;
+    width:  186px;
+    height: 186px;
   }
-  .slider{
-    margin-left: 18%;
+}
+
+@media screen and (max-width: 1100px){
+  .grid{
+    width: 175px;
+    height: 175px;
+  }
+}
+
+@media screen and (max-width: 1000px){
+	.grid{
+    width: 165px;
+    height: 165px;
   }
 }
 
 
-/*-----------------FUENTES------------------*/
+@media screen and (max-width: 900px){
+	.grid{
+    width: 155px;
+    height: 155px;
+  }
+}
+
+@media screen and (max-width: 800px){
+	.grid{
+    width: 145px;
+    height: 230px;
+  }
+}
+
+@media screen and (max-width: 700px){
+	.grid{
+    width: 135px;
+    height: 135px;
+  }
+}
+
+
+@media screen and (max-width: 650px){
+	.grid{
+    width: 130px;
+    height: 130px;
+  }
+}
 

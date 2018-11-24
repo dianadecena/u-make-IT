@@ -3,6 +3,7 @@ import { BebidasService } from '../services/bebidas.service';
 import { Producto } from '../models/producto';
 import { AuthService } from '../services/auth.service';
 import { Item } from '../models/item';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-bebidas',
@@ -23,7 +24,7 @@ export class BebidasComponent implements OnInit {
   editing: boolean = false;
   editingBebida: Producto;
 
-  constructor(private bebidasService: BebidasService, private auten: AuthService) {}
+  constructor(private bebidasService: BebidasService, private auten: AuthService,private toastr: ToastrManager) {}
 
   public admin = this.auten.isAdmin();
 
@@ -47,6 +48,7 @@ export class BebidasComponent implements OnInit {
   deleteBebida(event, bebida) {
    if(confirm("¿Estás seguro que deseas borrar este producto?")) {
      this.bebidasService.deleteBebida(bebida);
+     this.toastr.successToastr('Se elimino correctamente el producto', 'OPERACION EXITOSA!');
    } 
   }
 
@@ -78,8 +80,7 @@ export class BebidasComponent implements OnInit {
             localStorage.setItem("cart", JSON.stringify(cart));
           }
   }
-  alert("Has agregado una bebida al carrito");
-
+  this.toastr.successToastr('Se agrego el producto al carrito de compras', 'OPERACION EXITOSA!');
 }
 
 }

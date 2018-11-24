@@ -91,7 +91,7 @@ nav li:hover > ul{                           /* Submenu */
 /*-----------RESPONSIVE--------------*/
 
 
-@media screen and (max-width: 930px){
+@media screen and (max-width: 940px){
     .nombreEmpresa{
         display: none;
     }
@@ -103,7 +103,7 @@ nav li:hover > ul{                           /* Submenu */
     }
 }
 
-@media screen and (max-width: 585px){
+@media screen and (max-width: 610px){
 
     nav{
         font-size: 0.90em;
@@ -122,7 +122,7 @@ nav li:hover > ul{                           /* Submenu */
     }
 
     nav {                                       /* ESTILOS GENERALES DE LA NAV */
-        height: 165px;
+        height: 155px;
     }
 
     .nombreEmpresa{

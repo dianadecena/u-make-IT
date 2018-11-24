@@ -28,7 +28,7 @@ textarea:focus, input:focus, input[type]:focus {
 }
 
 form{
-    width: 35%;
+    width: 600px;
     margin: auto;
 }
 
@@ -56,4 +56,32 @@ button{
 #entrar button{
     width: 100%;
 }
+
+@media (max-width: 800px) {
+    form{
+        width: 500px;
+    }
+}
+
+@media (max-width: 700px) {
+    form{
+        width: 400px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    form{
+        width: 400px;
+    }
+}
+
+@media (max-width: 500px) {
+    form{
+        width: 400px;
+    }
+}
+
+
+
 

@@ -33,6 +33,7 @@ export class AgregarPostreComponent implements OnInit {
       this.postre.precio = '';
       this.postre.imagen = '';
       this.postre.disponible = '';
+      this.toastr.successToastr('Se agrego el producto exitosamente', 'OPERACION EXITOSA!');
     }else{
       if(this.postre.disponible != 'si' && this.postre.disponible != 'no'){
         this.toastr.errorToastr('Opcion invalida en el campo disponibilidad', 'HUBO UN ERROR!');

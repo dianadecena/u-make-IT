@@ -1,3 +1,15 @@
+#disponible:checked ~ #productos .nDisponible{
+	display: none;
+}
+
+#nDisponible:checked ~ #productos .disponible{
+    display: none;
+}
+
+label{
+    color:white;
+}
+
 .texto-pizza {
     font-family: Quicksand;
     color: rgb(255, 174, 119);
@@ -38,6 +50,7 @@
 
 .level-3 {
     margin-top: 30px;
+    margin-right: 30px;
 }
 
 .search-bar {

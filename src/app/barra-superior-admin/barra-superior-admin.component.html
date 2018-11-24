@@ -7,9 +7,17 @@
 <nav> 
     <ul id = "menu">
         <li><a [routerLink]="['/home']">Inicio</a></li>
-        <li><a [routerLink]="['/pizzas']">Productos</a></li>
         <li class="caption">
-            <a [routerLink]="['/home']"> Agregar </a>
+            <a> Productos </a>
+            <ul id = "submenu">
+                <li><a [routerLink]="['/pizzas']">Pizzas</a></li>
+                <li><a [routerLink]="['/bebidas']">Bebidas</a></li>
+                <li><a [routerLink]="['/postres']">Postres</a></li>
+                <li><a href="">Complemento</a></li>
+            </ul> 
+        </li>  
+        <li class="caption">
+            <a> Agregar Producto </a>
             <ul id = "submenu">
                 <li><a [routerLink]="['/agregar']">Pizza</a></li>
                 <li><a [routerLink]="['/agregarB']">Bebida</a></li>
@@ -18,7 +26,7 @@
             </ul> 
         </li>  
         <li class="caption">
-            <a [routerLink]="['/home']" *ngFor = "let user of userList">
+            <a *ngFor = "let user of userList">
                 <p *ngIf="user.email === title"> Admin: {{ user.userName }} </p>
             </a>
             <ul id = "submenu">
