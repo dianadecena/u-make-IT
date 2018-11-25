@@ -1,36 +1,27 @@
 
 .texto-pizza {
     font-family: Quicksand;
-    color: rgb(255, 174, 119);
+    color: white;
     margin-top: 30px;
     font-size: 6em;
-    text-shadow: 0 0 40px rgb(253, 82, 14);
+    text-shadow: 0px 0px 10px rgb(253, 82, 14),
+               0px 0px 20px rgb(253, 82, 14),
+               0px 0px 30px rgb(253, 82, 14),
+               0px 0px 40px rgb(253, 82, 14),
+               0px 0px 50px rgb(253, 82, 14),
+               0px 0px 60px rgb(253, 82, 14);
     padding: 0;
     font-weight: bolder;
     margin-left: 50px;
 }
 
 .level-1 {
-    background: linear-gradient(to top, rgb(2, 15, 31), rgb(4, 0, 17));
+    background: black;
     border-bottom-style: solid;
     border-bottom-color: #fff;
     border-bottom-width: 3.5px;
-    box-shadow: 0px 0px 8px #fff;
-}
-
-.sky {
-    background: rgb(17, 17, 17);
-}
-
-.stars {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 156px;
-    z-index: 0;
-    background: url(stars.png) repeat top center;
+    box-shadow: 0px 0px 18px #fff,
+                inset 0px -18px 18px -18px #fff;
 }
 
 .level-2 {
@@ -39,7 +30,6 @@
 
 .level-3 {
     margin-top: 30px;
-    margin-right: 30px;
 }
 
 .search-bar {
@@ -47,7 +37,7 @@
     margin-right: 50px;
     border-style: solid;
     border-width: 3px;
-    border-color: rgb(255, 174, 119);
+    border-color: rgb(253, 82, 14);
     border-radius: 30px;
     background: linear-gradient(to top, rgb(2, 15, 31), rgb(4, 0, 17));
     box-shadow: 0px 0px 13px rgb(255, 113, 57);
@@ -236,7 +226,7 @@
     border-radius: 50%;
     border-style: solid;
     border-width: 3px;
-    border-color: rgb(255, 174, 119);
+    border-color: rgb(253, 82, 14);
     float: left;
     width: 100px;
     height: 100px;
@@ -285,6 +275,48 @@
     font-size: 40px;
 }
 
+            span.flickering-1 {
+                animation: flickering-1 6s infinite;
+            }
+            span.flickering-2 {
+                animation: flickering-2 3s infinite;
+            }
+            span.flickering-3 {
+                animation: flickering-3 5s infinite;
+            }
+
+            @keyframes flickering-1 {
+                0% { opacity: 1; }
+                52% { opacity: 1; }
+                55% { opacity: 0; }
+                56% { opacity: 1; }
+                100% { opacity: 1; }
+            }
+            
+            @keyframes flickering-2 {
+                0% { opacity: 1; }
+                62% { opacity: 1; }
+                65% { opacity: 0; }
+                66% { opacity: 1; }
+                69% { opacity: 0; }
+                70% { opacity: 1; }
+                73% { opacity: 0; }
+                74% { opacity: 1; }
+                100% { opacity: 1; }
+            }
+            
+            @keyframes flickering-3 {
+                0% { opacity: 1; }
+                82% { opacity: 1; }
+                84% { opacity: 0; }
+                85% { opacity: 1; }
+                87% { opacity: 0; }
+                88% { opacity: 1; }
+                90% { opacity: 0; }
+                91% { opacity: 1; }
+                100% { opacity: 1; }
+            }
+
 @media (min-width: 1200px) {
     .pizza-button {
         height: 145px;
@@ -304,6 +336,10 @@
     .img-button {
         margin-left: 40px;
     }
+    .level-3 {
+      margin-right: 30px;
+    }
+
 }
 
 @media (max-width: 576px) {
