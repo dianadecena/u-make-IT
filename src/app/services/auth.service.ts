@@ -42,6 +42,7 @@ export class AuthService {
   }
 
   doLogout(){
+    localStorage.clear();
     this.router.navigate(['/login']);
     firebase.auth().signOut().then(function() {
       console.log("has salido de la pagina");
