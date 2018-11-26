@@ -45,16 +45,37 @@ export class PizzasComponent implements OnInit {
     }
 
     updatePizza() {
-      this.pizzasService.updatePizza(this.editingPizza);
-      this.editingPizza = {} as Producto;
-      this.editing = false;
+      var aprobado=true;
+      if(this.editingPizza.disponible!='si' && this.editingPizza.disponible!='no'){
+          this.toastr.errorToastr('Error, opcion valida ingresada en el campo disponibilidad');
+          aprobado=false;
+      }if(this.editingPizza.nombre == ''){
+          this.toastr.errorToastr('Error, el campo nombre no puede estar vacio');
+          aprobado=false;
+      }if(this.editingPizza.descripcion == ''){
+        this.toastr.errorToastr('Error, el campo descripcion no puede estar vacio');
+        aprobado=false;
+      }if(this.editingPizza.precio == '' || this.editingPizza.precio.length==0 || this.editingPizza.precio=="0" ){
+        this.toastr.errorToastr('Error, opcion valida ingresada en el campo precio');
+        aprobado=false;
+      }if(this.editingPizza.imagen == ''){
+        this.toastr.errorToastr('Error, el campo imagen no puede estar vacio');
+        aprobado=false;
+      }
+
+      if(aprobado==true){
+        this.pizzasService.updatePizza(this.editingPizza);
+        this.editingPizza = {} as Producto;
+        this.editing = false;
+        this.toastr.successToastr('El producto se ha modificado correctamente');
+      }
     }
 
     deletePizza(event, pizza) {
-    if(confirm("¿Estás seguro que deseas borrar este producto?")) {
-      this.pizzasService.deletePizza(pizza);
-      this.toastr.successToastr('Se elimino correctamente el producto');
-    } 
+      if(confirm("¿Estás seguro que deseas borrar este producto?")) {
+        this.pizzasService.deletePizza(pizza);
+        this.toastr.successToastr('Se elimino correctamente el producto');
+      } 
     }
 
   addToCart(n: string, p: number) {

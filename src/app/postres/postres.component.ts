@@ -41,9 +41,30 @@ export class PostresComponent implements OnInit {
   }
 
   updatePostre() {
-   this.postresService.updatePostre(this.editingPostre);
-   this.editingPostre = {} as Producto;
-   this.editing = false;
+    var aprobado=true;
+    if(this.editingPostre.disponible!='si' && this.editingPostre.disponible!='no'){
+        this.toastr.errorToastr('Error, opcion valida ingresada en el campo disponibilidad');
+        aprobado=false;
+    }if(this.editingPostre.nombre == ''){
+        this.toastr.errorToastr('Error, el campo nombre no puede estar vacio');
+        aprobado=false;
+    }if(this.editingPostre.descripcion == ''){
+      this.toastr.errorToastr('Error, el campo descripcion no puede estar vacio');
+      aprobado=false;
+    }if(this.editingPostre.precio == '' || this.editingPostre.precio.length==0 || this.editingPostre.precio=="0" ){
+      this.toastr.errorToastr('Error, opcion valida ingresada en el campo precio');
+      aprobado=false;
+    }if(this.editingPostre.imagen == ''){
+      this.toastr.errorToastr('Error, el campo imagen no puede estar vacio');
+      aprobado=false;
+    }
+
+    if(aprobado==true){
+      this.postresService.updatePostre(this.editingPostre);
+      this.editingPostre = {} as Producto;
+      this.editing = false;
+      this.toastr.successToastr('El producto se ha modificado correctamente');
+    }
   }
 
   deletePostre(event, postre) {
