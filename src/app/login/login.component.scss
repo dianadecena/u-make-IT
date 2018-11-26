@@ -6,10 +6,37 @@ body{
 h1{ /*Titulo*/
     text-align: center;
     color:#6666ff;
-    font-size: 350%;
+    font-size: 400%;
     margin-bottom: 15px;
-    text-shadow: 2px 2px #3333ff;
+    text-shadow: 0px 0px 10px #3333ff,
+               0px 0px 20px #3333ff,
+               0px 0px 30px #3333ff,
+               0px 0px 40px #3333ff,
+               0px 0px 50px #3333ff,
+               0px 0px 60px #3333ff;
+    animation: pulsating 3s infinite;
 }
+
+/* ANIMATIONS */
+@keyframes pulsating {
+    0% {
+        text-shadow: 0px 0px 0px;
+        opacity: 0.3;
+       } 
+    50% {
+        text-shadow: 0px 0px 10px #3333ff,
+        0px 0px 20px #3333ff,
+        0px 0px 30px #3333ff,
+        0px 0px 40px #3333ff,
+        0px 0px 50px #3333ff,
+        0px 0px 60px #3333ff;
+        opacity: 1;
+        }
+    100% {
+          text-shadow: 0px 0px 0px;
+          opacity: 0.3;
+         }
+  }
 
 input:invalid {
     border: 2px solid red;
@@ -42,15 +69,14 @@ button{
     margin-bottom: 10px;
     margin-top: 10px;
     background:  #3333ff;
-    border: none;
     padding: 8px;
     font-size: 1.2em;
+    border: none;
 }
 
 #entrar{
     width: 100%;
     display: inline-flex;
-    border: none;
 }
 
 #entrar button{
@@ -66,6 +92,9 @@ button{
 @media (max-width: 700px) {
     form{
         width: 400px;
+    }
+    h1{
+        font-size: 350%;
     }
 }
 
