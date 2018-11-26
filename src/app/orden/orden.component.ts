@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Item } from '../models/item';
 import { Extra } from '../models/extra';
 import {ToastrManager} from 'ng6-toastr-notifications';
+import { OrdenesService } from '../services/ordenes.service';
+import { Orden } from '../models/orden';
 
 @Component({
   selector: 'app-orden',
@@ -17,8 +19,15 @@ export class OrdenComponent implements OnInit {
   private items: Item[] = [];
   private extra_items: Extra[] = [];
 
+  public orden: Orden = {
+   id: '',
+   productos:[],
+   p_extras:[],
+   correo: ''
+  };
+
  
-  constructor(private toastr: ToastrManager) {}
+  constructor(private toastr: ToastrManager, private ordenesService: OrdenesService) {}
 
   ngOnInit() {
     this.loadCart();
@@ -105,6 +114,15 @@ export class OrdenComponent implements OnInit {
       }
       this.toastr.successToastr('Se elimino el producto exitosamente');
     }
+  }
+
+  terminarPedido() {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    for(var i=0; i<cart.length; i++) {
+      let item = JSON.parse(cart[i]);
+      this.orden.productos.push(item);
+    }
+    this.ordenesService.addOrden(this.orden);
   }
 
 }

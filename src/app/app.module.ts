@@ -35,6 +35,7 @@ import { PizzasService } from './services/pizzas.service';
 import { BebidasService } from './services/bebidas.service';
 import { PostresService } from './services/postres.service';
 import { ExtrasService } from './services/extras.service';
+import { OrdenesService } from './services/ordenes.service';
 import { AgregarBebidaComponent } from './agregar-bebida/agregar-bebida.component';
 import { AgregarPizzaComponent } from './agregar-pizza/agregar-pizza.component';
 import { AgregarPostreComponent } from './agregar-postre/agregar-postre.component';
@@ -140,7 +141,8 @@ const appRoutes:Routes = [
     PizzasService,
     BebidasService,
     PostresService,
-    ExtrasService
+    ExtrasService,
+    OrdenesService 
   ],
 
   bootstrap: [AppComponent]
