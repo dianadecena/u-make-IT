@@ -25,6 +25,7 @@
     "core-js": "^2.5.4",
     "firebase": "^5.5.6",
     "ng6-toastr-notifications": "^1.0.4",
+    "ngx-paypal": "^4.0.1",
     "ngx-toastr": "^9.1.1",
     "rxjs": "~6.2.0",
     "rxjs-compat": "^6.3.3",

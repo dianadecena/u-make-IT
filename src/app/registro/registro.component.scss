@@ -11,11 +11,37 @@ body{
 .titulo{
     text-align: center;
     color: #6666ff;
-    font-size: 350%;
+    font-size: 380%;
     margin-bottom: 5px;
-    text-shadow: 2px 2px #3333ff;
+    text-shadow: 0px 0px 10px #3333ff,
+    0px 0px 20px #3333ff,
+    0px 0px 30px #3333ff,
+    0px 0px 40px #3333ff,
+    0px 0px 50px #3333ff,
+    0px 0px 60px #3333ff;
+    animation: pulsating 3s infinite;
 }
 
+/* ANIMATIONS */
+@keyframes pulsating {
+    0% {
+        text-shadow: 0px 0px 0px;
+        opacity: 0.3;
+       } 
+    50% {
+        text-shadow: 0px 0px 10px #3333ff,
+        0px 0px 20px #3333ff,
+        0px 0px 30px #3333ff,
+        0px 0px 40px #3333ff,
+        0px 0px 50px #3333ff,
+        0px 0px 60px #3333ff;
+        opacity: 1;
+        }
+    100% {
+          text-shadow: 0px 0px 0px;
+          opacity: 0.3;
+         }
+  }
 
 #botonLogin{
     color: white;

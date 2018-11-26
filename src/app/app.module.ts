@@ -40,8 +40,14 @@ import { AgregarBebidaComponent } from './agregar-bebida/agregar-bebida.componen
 import { AgregarPizzaComponent } from './agregar-pizza/agregar-pizza.component';
 import { AgregarPostreComponent } from './agregar-postre/agregar-postre.component';
 
+//Toastr
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ng6-toastr-notifications';
+
+//PayPal
+import { NgxPayPalModule } from 'ngx-paypal';
+import { PaypalComponent } from './paypal/paypal.component';
+
 
 const appRoutes:Routes = [
   {
@@ -71,6 +77,10 @@ const appRoutes:Routes = [
   {
     path: '',
     component: LoginComponent
+  },
+  {
+    path: 'paypal',
+    component: PaypalComponent
   },
   {
     path: 'agregar',
@@ -120,7 +130,8 @@ const appRoutes:Routes = [
     BarraProductosComponent,
     AgregarBebidaComponent,
     AgregarPizzaComponent,
-    AgregarPostreComponent],
+    AgregarPostreComponent,
+    PaypalComponent],
 
   imports: [
     BrowserModule,
@@ -132,7 +143,8 @@ const appRoutes:Routes = [
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPayPalModule
   ],
 
   providers: [

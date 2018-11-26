@@ -27,20 +27,23 @@ export class ChangePasswordComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   tryChangePassword(value){
     if(value.passwordActual == ""){
       this.toastr.warningToastr('Debe ingresar su contraseña actual');
     }else{
-      if(value.password == value.password2){
+      if(value.password =="" || value.password2==""){
+        this.toastr.errorToastr('Todos los campos deben estar rellenados');
+      }else{
+        if(value.password == value.password2){
           this.resul=this.auten.doChangePassword(value);
           this.resetForm();
-      }else{
-        this.toastr.warningToastr('Las nuevas contraseñas ingresadas no son iguales');
+        }else{
+          this.toastr.warningToastr('Las nuevas contraseñas ingresadas no son iguales');
+        }
       }
+     
     }
   }
 
