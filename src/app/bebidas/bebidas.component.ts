@@ -40,9 +40,26 @@ export class BebidasComponent implements OnInit {
   }
 
   updateBebida() {
-   this.bebidasService.updateBebida(this.editingBebida);
-   this.editingBebida = {} as Producto;
-   this.editing = false;
+    var aprobado=true;
+    if(this.editingBebida.disponible!='si' && this.editingBebida.disponible!='no'){
+        this.toastr.errorToastr('Error, opcion valida ingresada en el campo disponibilidad');
+        aprobado=false;
+    }if(this.editingBebida.nombre == ''){
+        this.toastr.errorToastr('Error, el campo nombre no puede estar vacio');
+        aprobado=false;
+    }if(this.editingBebida.precio == '' || this.editingBebida.precio.length==0 || this.editingBebida.precio=="0" ){
+      this.toastr.errorToastr('Error, opcion valida ingresada en el campo precio');
+      aprobado=false;
+    }if(this.editingBebida.imagen == ''){
+      this.toastr.errorToastr('Error, el campo imagen no puede estar vacio');
+      aprobado=false;
+    }
+    if(aprobado==true){
+      this.bebidasService.updateBebida(this.editingBebida);
+      this.editingBebida = {} as Producto;
+      this.editing = false;
+      this.toastr.successToastr('El producto se ha modificado correctamente');
+    }
   }
 
   deleteBebida(event, bebida) {
