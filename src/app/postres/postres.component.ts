@@ -25,6 +25,8 @@ export class PostresComponent implements OnInit {
   folder:any;
   editing: boolean = false;
   editingPostre: Producto;
+  mostrar: number=0;
+  cantidadE: number=0;
   public admin = this.auten.isAdmin();
 
   constructor(private postresService: PostresService, private auten: AuthService,private toastr: ToastrManager) {}
@@ -39,6 +41,16 @@ export class PostresComponent implements OnInit {
    this.editing = !this.editing;
    this.editingPostre = postre;
   }
+
+  tryFiltro(value){
+    if(value=='0'){
+      this.mostrar=0;
+    }else if(value=='1'){
+      this.mostrar=1;
+    }else if(value=='2'){
+      this.mostrar=2;
+    }
+}
 
   updatePostre() {
     var aprobado=true;
@@ -78,9 +90,12 @@ export class PostresComponent implements OnInit {
       var item: Item = {
       nombre: n,
       precio: p,
-      cantidad: 1
+      cantidad: this.cantidadE,
      }
-     if (localStorage.getItem('cart') == null) {
+     if(this.cantidadE<=0){
+      this.toastr.errorToastr('ingrese una cantidad valida del producto');
+     }else{
+        if (localStorage.getItem('cart') == null) {
           let cart: any = [];
           cart.push(JSON.stringify(item));
           localStorage.setItem('cart', JSON.stringify(cart));
@@ -105,4 +120,5 @@ export class PostresComponent implements OnInit {
   }
     this.toastr.successToastr('Se agrego el postre al carrito de compras');
   }
+     }
 }

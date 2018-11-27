@@ -1,3 +1,40 @@
+#cantidad{
+    margin-top: 3px;
+    margin-left: 4px;
+    width: 40px;
+    height: 40px;
+}
+
+h1{
+    display: inline;
+    font-size: 1.2vw;
+    color: white;
+    margin-right: 10px;
+}
+
+#cajaFiltro{
+    margin-top: 30px;
+
+}
+
+#bFiltro{
+    background: rgb(255, 68, 115);
+    box-shadow: 0px 0px 13px rgb(255, 68, 115);
+    border-color: rgb(255, 68, 115);
+}
+
+.container-product {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #fff;
+    border-radius: 5px;
+    width: auto;
+    margin-right: 20px;
+}
+
 .texto-postres {
     font-family: Quicksand;
     color: white;

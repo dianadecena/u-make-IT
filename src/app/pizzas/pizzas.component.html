@@ -14,46 +14,118 @@
             </div>
     </div>
 
-    <div class="row level-2">
-        <div class="col-lg-12">
-            <div class="search-bar">
-                <input class="search-txt" type="text" placeholder="Search pizzas...">
-                <i class="fa fa-search fa-2x search-icon"></i>
+    <div id="cajaFiltro">
+        <h1>Filtrar productos por disponibilidad</h1>
+        <button type="submit" (click)="tryFiltro('0')" class="btn btn-primary" id="bFiltro">Todos</button>
+        <button type="submit" (click)="tryFiltro('1')" class="btn btn-primary" id="bFiltro">Disponibles</button>
+        <button type="submit" (click)="tryFiltro('2')" class="btn btn-primary" id="bFiltro">No disponibles</button>
+    </div>
+
+    <div *ngIf="mostrar=='0'">
+                     <div class="row level-3">
+                            <div class="sub-level-2 level-3" *ngFor="let pizza of pizzas">
+                                <div class="container-product" >
+                                    <div class="flex-container-product"><img class="imagen-producto" src="{{pizza.imagen}}" /></div>
+                                    <div class="flex-container-product-2">
+                                        <div class="box info">
+                                            <div class="nombre-producto">{{pizza.nombre}}</div>
+                                            <div class="precio">{{pizza.precio}}$</div>
+                                        </div>
+                                        <div class="flex-container-buttons">
+                                            <div class="box agregar" *ngIf = "!admin" (click)="addToCart(pizza.nombre, pizza.precio)"><div class="icon"><i class="fas fa-cart-plus fa-2x"></i></div></div>
+                                            <div class="box agregar" *ngIf = "admin" (click)="deletePizza($event, pizza)"><div class="icon"><i class="fas fa-trash-alt fa-2x"></i></div></div>
+                                            <a *ngIf = "admin" (click)="editPizza($event, pizza)"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
+                                            <a *ngIf = "!admin" [routerLink]="['/personalizar']"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
+                                            <input  type="number" name="cantidad" [(ngModel)]="cantidadE" id="cantidad">
+                                        </div>
+                                    </div>
+                                    <div *ngIf="editing && editingPizza.id == pizza.id">
+                                        <form (ngSubmit)="updatePizza(pizza)">
+                                            <input type="text" name="nombre" [(ngModel)]="editingPizza.nombre">
+                                            <input type="text" name="descripcion" [(ngModel)]="editingPizza.descripcion">
+                                            <input type="text" name="precio" [(ngModel)]="editingPizza.precio">
+                                            <input type="text" name="imagen" [(ngModel)]="editingPizza.imagen">
+                                            <input type="text" name="disponible" [(ngModel)]="editingPizza.disponible" style="text-transform:lowercase">
+                                            <button type="submit">Actualizar</button>
+                                        </form>
+                                     </div>
+                                    <div class="container-disponibilidad" *ngIf="pizza.disponible=='si'">Disponible</div>
+                                    <div class="container-no-disponibilidad" *ngIf="pizza.disponible=='no'">No disponible</div>
+                                </div>
+                            </div>
             </div>
+        </div>
+
+    <div *ngIf="mostrar=='1'">
+                    <div class="row level-3">
+                            <div  class="sub-level-2 level-3" *ngFor="let pizza of pizzas">
+                                <div class="container-product" *ngIf = "pizza.disponible==='si'">
+                                    <div class="flex-container-product"><img class="imagen-producto" src="{{pizza.imagen}}" /></div>
+                                    <div class="flex-container-product-2">
+                                        <div class="box info">
+                                            <div class="nombre-producto">{{pizza.nombre}}</div>
+                                            <div class="precio">{{pizza.precio}}$</div>
+                                        </div>
+                                        <div class="flex-container-buttons">
+                                            <div class="box agregar" *ngIf = "!admin" (click)="addToCart(pizza.nombre, pizza.precio)"><div class="icon"><i class="fas fa-cart-plus fa-2x"></i></div></div>
+                                            <div class="box agregar" *ngIf = "admin" (click)="deletePizza($event, pizza)"><div class="icon"><i class="fas fa-trash-alt fa-2x"></i></div></div>
+                                            <a *ngIf = "admin" (click)="editPizza($event, pizza)"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
+                                            <a *ngIf = "!admin" [routerLink]="['/personalizar']"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
+                                            <input  type="number" name="cantidad" [(ngModel)]="cantidadE" id="cantidad">
+                                        </div>
+                                    </div>
+                                    <div *ngIf="editing && editingPizza.id == pizza.id">
+                                        <form (ngSubmit)="updatePizza(pizza)">
+                                            <input type="text" name="nombre" [(ngModel)]="editingPizza.nombre">
+                                            <input type="text" name="descripcion" [(ngModel)]="editingPizza.descripcion">
+                                            <input type="text" name="precio" [(ngModel)]="editingPizza.precio">
+                                            <input type="text" name="imagen" [(ngModel)]="editingPizza.imagen">
+                                            <input type="text" name="disponible" [(ngModel)]="editingPizza.disponible" style="text-transform:lowercase">
+                                            <button type="submit">Actualizar</button>
+                                        </form>
+                                     </div>
+                                    <div class="container-disponibilidad" *ngIf="pizza.disponible=='si'">Disponible</div>
+                                    <div class="container-no-disponibilidad" *ngIf="pizza.disponible=='no'">No disponible</div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+
+    <div *ngIf="mostrar=='2'">
+        <div class="row level-3">
+                <div class="sub-level-2 level-3" *ngFor="let pizza of pizzas">
+                            <div class="container-product" *ngIf = "pizza.disponible==='no'">
+                                <div class="flex-container-product"><img class="imagen-producto" src="{{pizza.imagen}}" /></div>
+                                <div class="flex-container-product-2">
+                                    <div class="box info">
+                                        <div class="nombre-producto">{{pizza.nombre}}</div>
+                                        <div class="precio">{{pizza.precio}}$</div>
+                                    </div>
+                                    <div class="flex-container-buttons">
+                                        <div class="box agregar" *ngIf = "!admin" (click)="addToCart(pizza.nombre, pizza.precio)"><div class="icon"><i class="fas fa-cart-plus fa-2x"></i></div></div>
+                                        <div class="box agregar" *ngIf = "admin" (click)="deletePizza($event, pizza)"><div class="icon"><i class="fas fa-trash-alt fa-2x"></i></div></div>
+                                        <a *ngIf = "admin" (click)="editPizza($event, pizza)"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
+                                        <a *ngIf = "!admin" [routerLink]="['/personalizar']"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
+                                        <input  type="number" name="cantidad" [(ngModel)]="cantidadE" id="cantidad">
+                                    </div>
+                                </div>
+                                <div *ngIf="editing && editingPizza.id == pizza.id">
+                                    <form (ngSubmit)="updatePizza(pizza)">
+                                        <input type="text" name="nombre" [(ngModel)]="editingPizza.nombre">
+                                        <input type="text" name="descripcion" [(ngModel)]="editingPizza.descripcion">
+                                        <input type="text" name="precio" [(ngModel)]="editingPizza.precio">
+                                        <input type="text" name="imagen" [(ngModel)]="editingPizza.imagen">
+                                        <input type="text" name="disponible" [(ngModel)]="editingPizza.disponible" style="text-transform:lowercase">
+                                        <button type="submit">Actualizar</button>
+                                    </form>
+                                 </div>
+                                <div class="container-disponibilidad" *ngIf="pizza.disponible=='si'">Disponible</div>
+                                <div class="container-no-disponibilidad" *ngIf="pizza.disponible=='no'">No disponible</div>
+                            </div>
+                        </div>
         </div>
     </div>
-        
-    <div class="row level-3">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 sub-level-2 level-3" *ngFor="let pizza of pizzas">
-            <div class="container-product">
-                <div class="flex-container-product"><img class="imagen-producto" src="{{pizza.imagen}}" /></div>
-                <div class="flex-container-product-2">
-                    <div class="box info">
-                        <div class="nombre-producto">{{pizza.nombre}}</div>
-                        <div class="precio">{{pizza.precio}}$</div>
-                    </div>
-                    <div class="flex-container-buttons">
-                        <div class="box agregar" *ngIf = "!admin" (click)="addToCart(pizza.nombre, pizza.precio)"><div class="icon"><i class="fas fa-cart-plus fa-2x"></i></div></div>
-                        <div class="box agregar" *ngIf = "admin" (click)="deletePizza($event, pizza)"><div class="icon"><i class="fas fa-trash-alt fa-2x"></i></div></div>
-                        <a *ngIf = "admin" (click)="editPizza($event, pizza)"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
-                        <a *ngIf = "!admin" [routerLink]="['/personalizar']"><div class="box personalizar"><div class="icon"><i class="fa fa-edit fa-2x"></i></div></div></a>
-                    </div>
-                </div>
-                <div *ngIf="editing && editingPizza.id == pizza.id">
-                    <form (ngSubmit)="updatePizza(pizza)">
-                        <input type="text" name="nombre" [(ngModel)]="editingPizza.nombre">
-                        <input type="text" name="descripcion" [(ngModel)]="editingPizza.descripcion">
-                        <input type="text" name="precio" [(ngModel)]="editingPizza.precio">
-                        <input type="text" name="imagen" [(ngModel)]="editingPizza.imagen">
-                        <input type="text" name="disponible" [(ngModel)]="editingPizza.disponible" style="text-transform:lowercase">
-                        <button type="submit">Actualizar</button>
-                    </form>
-                 </div>
-                <div class="container-disponibilidad" *ngIf="pizza.disponible=='si'">Disponible</div>
-                <div class="container-no-disponibilidad" *ngIf="pizza.disponible=='no'">No disponible</div>
-            </div>
-        </div>
-    </div> 
+
 </div>
 
     
