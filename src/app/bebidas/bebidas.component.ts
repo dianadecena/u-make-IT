@@ -23,6 +23,8 @@ export class BebidasComponent implements OnInit {
 
   editing: boolean = false;
   editingBebida: Producto;
+  mostrar: number=0;
+  cantidadE: number=0;
 
   constructor(private bebidasService: BebidasService, private auten: AuthService,private toastr: ToastrManager) {}
 
@@ -33,6 +35,16 @@ export class BebidasComponent implements OnInit {
       this.bebidas = bebidas;
     });
   }
+
+  tryFiltro(value){
+    if(value=='0'){
+      this.mostrar=0;
+    }else if(value=='1'){
+      this.mostrar=1;
+    }else if(value=='2'){
+      this.mostrar=2;
+    }
+}
 
   editBebida(event, bebida) {
    this.editing = !this.editing;
@@ -73,33 +85,37 @@ export class BebidasComponent implements OnInit {
      var item: Item = {
       nombre: n,
       precio: p,
-      cantidad: 1
+      cantidad: this.cantidadE,
      }
-     if (localStorage.getItem('cart') == null) {
-          let cart: any = [];
+     if(this.cantidadE<=0){
+      this.toastr.errorToastr('ingrese una cantidad valida del producto');
+     }else{
+      if (localStorage.getItem('cart') == null) {
+        let cart: any = [];
+        cart.push(JSON.stringify(item));
+        localStorage.setItem('cart', JSON.stringify(cart));
+      } else {
+        let cart: any = JSON.parse(localStorage.getItem('cart'));
+        let index: number = -1;
+        for (var i = 0; i < cart.length; i++) {
+          let item: Item = JSON.parse(cart[i]);
+          if (item.nombre == n) {
+            index = i;
+            break;
+          }
+        }
+        if (index == -1) {
           cart.push(JSON.stringify(item));
           localStorage.setItem('cart', JSON.stringify(cart));
         } else {
-          let cart: any = JSON.parse(localStorage.getItem('cart'));
-          let index: number = -1;
-          for (var i = 0; i < cart.length; i++) {
-            let item: Item = JSON.parse(cart[i]);
-            if (item.nombre == n) {
-              index = i;
-              break;
-            }
-          }
-          if (index == -1) {
-            cart.push(JSON.stringify(item));
-            localStorage.setItem('cart', JSON.stringify(cart));
-          } else {
-            let item: Item = JSON.parse(cart[index]);
-            item.cantidad += 1;
-            cart[index] = JSON.stringify(item);
-            localStorage.setItem("cart", JSON.stringify(cart));
-          }
-  }
-  this.toastr.successToastr('Has agregado una bebida al carrito');
+          let item: Item = JSON.parse(cart[index]);
+          item.cantidad += 1;
+          cart[index] = JSON.stringify(item);
+          localStorage.setItem("cart", JSON.stringify(cart));
+        }
+      }
+      this.toastr.successToastr('Has agregado una bebida al carrito');
+          } 
 }
 
 }
