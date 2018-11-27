@@ -14,11 +14,11 @@ h1{ /*Titulo*/
                0px 0px 40px #3333ff,
                0px 0px 50px #3333ff,
                0px 0px 60px #3333ff;
-    animation: pulsating 3s infinite;
+    animation: neon 3s infinite;
 }
 
 /* ANIMATIONS */
-@keyframes pulsating {
+@keyframes neon {
     0% {
         text-shadow: 0px 0px 0px;
         opacity: 0.3;

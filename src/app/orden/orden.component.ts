@@ -4,11 +4,10 @@ import { Extra } from '../models/extra';
 import {ToastrManager} from 'ng6-toastr-notifications';
 import { OrdenesService } from '../services/ordenes.service';
 import { Orden } from '../models/orden';
-=======
 import { of } from 'rxjs';
 import { PayPalConfig, PayPalEnvironment, PayPalIntegrationType } from 'ngx-paypal';
+import { AuthService } from '../services/auth.service';
  
-
 @Component({
   selector: 'app-orden',
   templateUrl: './orden.component.html',
@@ -17,11 +16,13 @@ import { PayPalConfig, PayPalEnvironment, PayPalIntegrationType } from 'ngx-payp
 
 export class OrdenComponent implements OnInit {
 
-  private total: number = 0;
-  private subtotal: number = 0;
-  private total_extras: number = 0;
-  private items: Item[] = [];
-  private extra_items: Extra[] = [];
+  public total: number = 0;
+  public subtotal: number = 0;
+  public total_extras: number = 0;
+  public items: Item[] = [];
+  public extra_items: Extra[] = [];
+
+  public payPalConfig?: PayPalConfig;
 
   public orden: Orden = {
    id: '',
@@ -30,9 +31,9 @@ export class OrdenComponent implements OnInit {
    correo: ''
   };
 
-  constructor(private toastr: ToastrManager, private ordenesService: OrdenesService) {}
+  addScript: boolean = false;
 
-  public payPalConfig?: PayPalConfig;
+  constructor(private toastr: ToastrManager, private ordenesService: OrdenesService, private userService: AuthService) {}
 
   ngOnInit() {
     this.initConfig();
@@ -122,12 +123,14 @@ export class OrdenComponent implements OnInit {
     }
   }
 
-  terminarPedido() {
+  terminarPedido() {  
     let cart = JSON.parse(localStorage.getItem('cart'));
     for(var i=0; i<cart.length; i++) {
       let item = JSON.parse(cart[i]);
+      console.log(item);
       this.orden.productos.push(item);
     }
+    this.orden.correo = this.userService.usuarioActual();
     this.ordenesService.addOrden(this.orden);
   }
 
@@ -188,4 +191,17 @@ export class OrdenComponent implements OnInit {
       }
     );
   }
+
+  private addPaypalScript(){
+    if(!this.addScript){
+      this.addScript = true;
+      return new Promise((resolve, reject)=>{
+        let scripttagElement = document.createElement('script');
+        scripttagElement.src='https://www.paypalobjects.com/api/checkout.js';
+        scripttagElement.onload = resolve;
+        document.body.appendChild(scripttagElement);
+      })
+    }
+  }
+
 }

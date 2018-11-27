@@ -1,5 +1,5 @@
 import { Item } from './item';
-import { Extra } from './extra'
+import { Extra } from './extra';
 
 export interface Orden {
   id?:string;

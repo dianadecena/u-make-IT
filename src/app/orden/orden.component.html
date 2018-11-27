@@ -27,13 +27,13 @@
                     <div class="total-texto">
                     <span>Extras: {{total_extras}}$</span></div>
                     <div class="total-texto">Total a pagar:</div><div class="total-monto">{{total}}$</div>
-                        <div class="terminar-pedido" (click)="terminarPedido()"><span>Finalizar pedido</span></div>
+                    <button class="terminar-pedido" (click)="terminarPedido()"><span>Finalizar pedido</span></button>
+                    <h1 id="pagar">Confirmar pago y proceder a pagar con PayPal</h1>
+                    <ngx-paypal [config]="payPalConfig" id="botonPayPal"></ngx-paypal>
                     </div>
                 </div>
             </div>
 </div>
-<h1 id="pagar">Confirmar pago y proceder a pagar con PayPal</h1>
-<ngx-paypal [config]="payPalConfig" id="botonPayPal"></ngx-paypal>
                
             
 

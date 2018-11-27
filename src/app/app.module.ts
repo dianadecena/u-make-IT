@@ -9,6 +9,7 @@ import { BarraSuperiorComponent } from './barra-superior/barra-superior.componen
 import { PizzasComponent } from './pizzas/pizzas.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { OrdenComponent } from './orden/orden.component';
+import { ComprasComponent } from './compras/compras.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { BebidasComponent } from './bebidas/bebidas.component';
 import { PostresComponent } from './postres/postres.component';
@@ -131,7 +132,8 @@ const appRoutes:Routes = [
     AgregarBebidaComponent,
     AgregarPizzaComponent,
     AgregarPostreComponent,
-    PaypalComponent],
+    PaypalComponent,
+    ComprasComponent],
 
   imports: [
     BrowserModule,

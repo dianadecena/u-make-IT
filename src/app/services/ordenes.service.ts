@@ -12,9 +12,18 @@ export class OrdenesService {
   ordenesCollection: AngularFirestoreCollection<Orden>;
   ordenes: Observable<Orden[]>;
   ordenDoc: AngularFirestoreDocument<Orden>;
+  
+  result:any;
 
-  constructor(public angularFirestore: AngularFirestore,
-    ) { 
+  constructor(public angularFirestore: AngularFirestore) { 
+    this.ordenesCollection = this.angularFirestore.collection('ordenes');
+    this.ordenes = this.ordenesCollection.snapshotChanges().pipe(map(changes =>{
+      return changes.map(a => {
+        const data = a.payload.doc.data() as Orden;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
   }
 
   public getOrdenes(){
