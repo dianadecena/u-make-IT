@@ -14,11 +14,12 @@ import { PayPalConfig, PayPalEnvironment, PayPalIntegrationType } from 'ngx-payp
 
 export class OrdenComponent implements OnInit {
 
-  private total: number = 0;
-  private subtotal: number = 0;
-  private total_extras: number = 0;
-  private items: Item[] = [];
-  private extra_items: Extra[] = [];
+  public total: number = 0;
+  public subtotal: number = 0;
+  public total_extras: number = 0;
+  public items: Item[] = [];
+  public extra_items: Extra[] = [];
+  public impuestos:number=0;
 
   public payPalConfig?: PayPalConfig;
 
@@ -48,6 +49,7 @@ export class OrdenComponent implements OnInit {
       var precio_final = precio_number*cantidad;
       this.total += precio_final;
     }
+    this.impuestos = this.impuestos + this.total;
   }
 
   loadExtras(): void {
@@ -67,6 +69,8 @@ export class OrdenComponent implements OnInit {
       var precio_final = precio_number*cantidad;
       this.total_extras += precio_final;
     }
+    this.impuestos = this.impuestos + this.total_extras;
+    this.impuestos = this.impuestos*0.15;
   }
 
   reloadCart(nombre: string, cant: number): void {
