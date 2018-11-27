@@ -28,6 +28,8 @@ export class PizzasComponent implements OnInit {
   folder:any;
   editing: boolean = false;
   editingPizza: Producto;
+  cantidadE: number=0;
+  mostrar: number=0;
 
   constructor(private pizzasService: PizzasService, private auten: AuthService, private toastr: ToastrManager) {}
 
@@ -42,6 +44,16 @@ export class PizzasComponent implements OnInit {
     editPizza(event, pizza) {
       this.editing = !this.editing;
       this.editingPizza = pizza;
+    }
+  
+    tryFiltro(value){
+        if(value=='0'){
+          this.mostrar=0;
+        }else if(value=='1'){
+          this.mostrar=1;
+        }else if(value=='2'){
+          this.mostrar=2;
+        }
     }
 
     updatePizza() {
@@ -82,9 +94,12 @@ export class PizzasComponent implements OnInit {
      var item: Item = {
       nombre: n,
       precio: p,
-      cantidad: 1
+      cantidad: this.cantidadE,
      }
-     if (localStorage.getItem('cart') == null) {
+     if(this.cantidadE<=0){
+      this.toastr.errorToastr('ingrese una cantidad valida del producto');
+     }else{
+        if (localStorage.getItem('cart') == null) {
           let cart: any = [];
           cart.push(JSON.stringify(item));
           localStorage.setItem('cart', JSON.stringify(cart));
@@ -109,7 +124,7 @@ export class PizzasComponent implements OnInit {
           }
   }
   this.toastr.successToastr('Has agregado una pizza al carrito');
-
+     }
 }
 
 }
